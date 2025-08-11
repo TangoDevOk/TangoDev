@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TangoDev - Agencia de Desarrollo Web
 
 Sitio web profesional para una agencia de desarrollo web que ofrece servicios de diseño, desarrollo, marketing digital y SEO.
@@ -171,3 +172,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ---
 
 **TangoDev** - Transformando ideas en realidad digital 🚀
+=======
+# TangoDev
+>>>>>>> 896e1577a5fc38c8a20a709cab2f1dfc63757aea
