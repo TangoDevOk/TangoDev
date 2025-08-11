@@ -131,43 +131,11 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Newsletter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12 pt-8 border-t border-gray-800"
-        >
-          <div className="max-w-md">
-            <h4 className="text-lg font-semibold text-white mb-4">
-              Suscríbete a nuestro Newsletter
-            </h4>
-            <p className="text-gray-300 mb-4 text-sm">
-              Recibe las últimas noticias sobre desarrollo web y marketing digital.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Tu email"
-                className="flex-1 px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 backdrop-blur-sm"
-              />
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-r-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl"
-              >
-                Suscribir
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
           className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
         >

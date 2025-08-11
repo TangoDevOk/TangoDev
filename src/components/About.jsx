@@ -152,19 +152,22 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Carlos Rodríguez',
-                role: 'Desarrollador Frontend',
-                description: 'Especialista en React, Vue.js y tecnologías modernas.'
+                name: 'Tomas Averbuj',
+                role: 'Desarrollador Full Stack',
+                description: 'Especialista en React, Node.js y tecnologías modernas.',
+                image: '/images/tomas-averbuj.jpg'
               },
               {
-                name: 'Ana Martínez',
-                role: 'Diseñadora UI/UX',
-                description: 'Creadora de experiencias digitales excepcionales.'
+                name: 'Nicolas Siciliano',
+                role: 'Diseñador UI/UX',
+                description: 'Creador de experiencias digitales excepcionales.',
+                image: '/images/nicolas-siciliano.jpg'
               },
               {
-                name: 'Luis González',
-                role: 'Especialista en Marketing',
-                description: 'Estrategias digitales que generan resultados.'
+                name: 'Tomas Martorelli',
+                role: 'Especialista en Marketing Digital',
+                description: 'Estrategias digitales que generan resultados.',
+                image: '/images/tomas-martorelli.jpg'
               }
             ].map((member, index) => (
               <motion.div
@@ -176,10 +179,12 @@ const About = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="glass rounded-xl p-6 border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-blue-400">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+                <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-2 border-blue-500/30">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2">
                   {member.name}

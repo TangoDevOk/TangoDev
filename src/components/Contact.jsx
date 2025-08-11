@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
-// import emailjs from "@emailjs/browser";
+import { sendEmail, validateForm } from '../utils/emailjs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,31 +12,61 @@ const Contact = () => {
     message: ''
   });
 
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // Limpiar error del campo cuando el usuario empiece a escribir
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simular envío de formulario
-    setTimeout(() => {
+    // Validar formulario
+    const validation = validateForm(formData);
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      const result = await sendEmail(formData);
+      
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+        setErrors({});
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
-    }, 2000);
+    }
   };
 
   const contactInfo = [
@@ -95,6 +125,27 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400"
+              >
+                ¡Mensaje enviado exitosamente! Te contactaremos pronto.
+              </motion.div>
+            )}
+
+            {submitStatus === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400"
+              >
+                Error al enviar el mensaje. Por favor, intenta nuevamente.
+              </motion.div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -107,10 +158,14 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm"
+                    className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm ${
+                      errors.name ? 'border-red-500' : 'border-gray-600'
+                    }`}
                     placeholder="Tu nombre"
                   />
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -123,10 +178,14 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm"
+                    className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm ${
+                      errors.email ? 'border-red-500' : 'border-gray-600'
+                    }`}
                     placeholder="tu@email.com"
                   />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                  )}
                 </div>
               </div>
 
@@ -177,11 +236,15 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm resize-none"
+                  className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm resize-none ${
+                    errors.message ? 'border-red-500' : 'border-gray-600'
+                  }`}
                   placeholder="Cuéntanos sobre tu proyecto..."
                 />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-400">{errors.message}</p>
+                )}
               </div>
 
               <motion.button
