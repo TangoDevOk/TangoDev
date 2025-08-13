@@ -162,7 +162,7 @@ const result = await emailjs.sendForm(
 ## 📞 Soporte
 
 Para soporte técnico o consultas sobre el proyecto, contacta a:
-- Email: info@tangodev.com
+- Email: tangodev08@gmail.com
 - Teléfono: +54 11 1234-5678
 
 ## 📄 Licencia

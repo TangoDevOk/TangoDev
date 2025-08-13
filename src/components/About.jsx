@@ -203,14 +203,14 @@ const About = () => {
               },
               {
                 name: 'Nicolas Siciliano',
-                role: 'Diseñador UI/UX',
-                description: 'Creador de experiencias digitales excepcionales. Transforma ideas en diseños que enamoran.',
+                role: 'Desarrollador Full Stack',
+                description: 'Especialista en React, Vue.js y tecnologías backend. Creador de aplicaciones completas y escalables.',
                 image: '/images/nicolas-siciliano.jpg'
               },
               {
                 name: 'Tomas Martorelli',
-                role: 'Especialista en Marketing Digital',
-                description: 'Estrategias digitales que generan resultados. Conecta tu proyecto con el mundo.',
+                role: 'Desarrollador Full Stack & Diseñador',
+                description: 'Desarrollador full stack con especialización en diseño UI/UX. Creador de experiencias digitales excepcionales.',
                 image: '/images/tomas-martorelli.jpg'
               }
             ].map((member, index) => (
@@ -221,7 +221,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="glass rounded-xl p-6 border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300"
+                className="rounded-xl p-6 transition-all duration-300"
               >
                 <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-2 border-blue-500/30">
                   <img 

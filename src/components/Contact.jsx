@@ -85,8 +85,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      info: 'info@tangodev.com',
-      link: 'mailto:info@tangodev.com'
+              info: 'tangodev08@gmail.com',
+        link: 'mailto:tangodev08@gmail.com'
     },
     {
       icon: Phone,
