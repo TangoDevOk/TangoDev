@@ -3,28 +3,28 @@ import { Users, Award, Clock, TrendingUp } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { icon: Users, number: '50+', label: 'Clientes Satisfechos' },
-    { icon: Award, number: '100+', label: 'Proyectos Completados' },
-    { icon: Clock, number: '5+', label: 'Años de Experiencia' },
-    { icon: TrendingUp, number: '95%', label: 'Tasa de Éxito' }
+    { icon: Users, number: '10+', label: 'Proyectos Innovadores' },
+    { icon: Award, number: '100%', label: 'Dedicación Total' },
+    { icon: Clock, number: '24/7', label: 'Disponibilidad' },
+    { icon: TrendingUp, number: '∞', label: 'Potencial de Crecimiento' }
   ];
 
   const values = [
     {
-      title: 'Innovación Constante',
-      description: 'Siempre al día con las últimas tecnologías y tendencias del mercado.'
+      title: 'Ideas Frescas',
+      description: 'Somos una startup joven con mentes creativas y enfoques innovadores para cada proyecto.'
     },
     {
-      title: 'Calidad Premium',
-      description: 'Cada proyecto se desarrolla con los más altos estándares de calidad.'
+      title: 'Innovación Argentina',
+      description: 'Combinamos la pasión argentina con las mejores tecnologías globales para crear soluciones únicas.'
     },
     {
-      title: 'Atención Personalizada',
-      description: 'Cada cliente recibe atención individualizada y soluciones a medida.'
+      title: 'Flexibilidad Total',
+      description: 'Como startup, nos adaptamos rápidamente a las necesidades cambiantes de tu proyecto.'
     },
     {
-      title: 'Resultados Medibles',
-      description: 'Nos enfocamos en generar resultados tangibles para tu negocio.'
+      title: 'Crecimiento Juntos',
+      description: 'No solo desarrollamos tu proyecto, crecemos junto a ti en este viaje emprendedor.'
     }
   ];
 
@@ -65,9 +65,9 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-lg text-gray-300 leading-relaxed mb-6"
               >
-                Somos un equipo apasionado de desarrolladores, diseñadores y especialistas 
-                en marketing digital. Nuestra misión es transformar ideas en experiencias 
-                digitales excepcionales que impulsen el crecimiento de tu negocio.
+                Somos <strong>TangoDev</strong>, una startup argentina nacida de la pasión por la tecnología 
+                y la innovación. Nuestro equipo joven y dinámico está listo para encarar 
+                proyectos nuevos con ideas frescas y enfoques disruptivos.
               </motion.p>
               
               <motion.p
@@ -77,8 +77,9 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-lg text-gray-300 leading-relaxed"
               >
-                Con años de experiencia en el sector, hemos ayudado a empresas de todos 
-                los tamaños a alcanzar sus objetivos digitales y posicionarse en el mercado.
+                Como startup, entendemos los desafíos de emprender y creemos en el poder 
+                de las ideas innovadoras. Estamos aquí para transformar tu visión en 
+                realidad digital, con la flexibilidad y creatividad que solo una startup puede ofrecer.
               </motion.p>
             </div>
 
@@ -138,6 +139,49 @@ const About = () => {
           </motion.div>
         </div>
 
+        {/* Startup Spirit Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="glass rounded-2xl p-8 border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">
+              El Espíritu <span className="gradient-text">Startup</span> 🇦🇷
+            </h3>
+            <p className="text-lg text-gray-300 mb-6 max-w-4xl mx-auto">
+              Como startup argentina, traemos la pasión, creatividad y determinación que caracteriza 
+              a los emprendedores de nuestro país. Estamos aquí para romper las reglas, 
+              innovar sin límites y crear soluciones que marquen la diferencia.
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
+              <div className="text-center">
+                <div className="text-3xl mb-2">🚀</div>
+                <h4 className="text-white font-semibold mb-2">Innovación Disruptiva</h4>
+                <p className="text-gray-400 text-sm">Pensamos fuera de la caja</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl mb-2">⚡</div>
+                <h4 className="text-white font-semibold mb-2">Velocidad de Ejecución</h4>
+                <p className="text-gray-400 text-sm">Resultados rápidos y efectivos</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl mb-2">🎯</div>
+                <h4 className="text-white font-semibold mb-2">Enfoque en Resultados</h4>
+                <p className="text-gray-400 text-sm">Tu éxito es nuestro éxito</p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
         {/* Team Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -147,26 +191,26 @@ const About = () => {
           className="mt-20 text-center"
         >
           <h3 className="text-2xl font-bold text-white mb-8">
-            Nuestro <span className="gradient-text">Equipo</span>
+            Nuestro <span className="gradient-text">Equipo</span> 🇦🇷
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 name: 'Tomas Averbuj',
                 role: 'Desarrollador Full Stack',
-                description: 'Especialista en React, Node.js y tecnologías modernas.',
+                description: 'Especialista en React, Node.js y tecnologías modernas. Apasionado por crear soluciones innovadoras.',
                 image: '/images/tomas-averbuj.jpg'
               },
               {
                 name: 'Nicolas Siciliano',
                 role: 'Diseñador UI/UX',
-                description: 'Creador de experiencias digitales excepcionales.',
+                description: 'Creador de experiencias digitales excepcionales. Transforma ideas en diseños que enamoran.',
                 image: '/images/nicolas-siciliano.jpg'
               },
               {
                 name: 'Tomas Martorelli',
                 role: 'Especialista en Marketing Digital',
-                description: 'Estrategias digitales que generan resultados.',
+                description: 'Estrategias digitales que generan resultados. Conecta tu proyecto con el mundo.',
                 image: '/images/tomas-martorelli.jpg'
               }
             ].map((member, index) => (

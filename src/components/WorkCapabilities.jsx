@@ -137,31 +137,7 @@ const WorkCapabilities = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="glass rounded-2xl p-8 border border-blue-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              ¿Necesitas una Solución Específica?
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Nuestro equipo tiene experiencia en múltiples tecnologías y metodologías. 
-              Contáctanos para discutir cómo podemos ayudarte con tu proyecto específico.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Consultar Capacidades
-            </motion.button>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );

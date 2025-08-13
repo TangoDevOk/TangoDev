@@ -25,12 +25,13 @@ const Navbar = () => {
           {/* Logo */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center shadow-lg">
-              <div className="w-4 h-4 bg-white rounded-sm"></div>
-            </div>
-            <span className="text-xl font-bold text-white">TangoDev</span>
+            <img 
+              src="/images/tangodevblanco.png" 
+              alt="TangoDev Logo" 
+              className="h-78 w-auto object-contain"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}

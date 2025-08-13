@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, Heart, Zap, Rocket } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,22 +15,16 @@ const Footer = () => {
     empresa: [
       { name: 'Sobre Nosotros', href: '#about' },
       { name: 'Nuestro Equipo', href: '#about' },
-      { name: 'Portafolio', href: '#' },
+              { name: 'Portafolio', href: '#projects' },
       { name: 'Blog', href: '#' },
       { name: 'Carreras', href: '#' }
-    ],
-    recursos: [
-      { name: 'Guías SEO', href: '#' },
-      { name: 'Tutoriales Web', href: '#' },
-      { name: 'Herramientas', href: '#' },
-      { name: 'Casos de Éxito', href: '#' },
-      { name: 'FAQ', href: '#' }
     ],
     legal: [
       { name: 'Términos de Servicio', href: '#' },
       { name: 'Política de Privacidad', href: '#' },
       { name: 'Cookies', href: '#' },
-      { name: 'Aviso Legal', href: '#' }
+      { name: 'Aviso Legal', href: '#' },
+      { name: 'FAQ', href: '#' }
     ]
   };
 
@@ -40,109 +34,200 @@ const Footer = () => {
     { icon: Instagram, href: '#', label: 'Instagram' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Github, href: '#', label: 'GitHub' }
-  ];
+      ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden">
-      {/* Background Effects */}
+    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+      {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-green-500/3 rounded-full blur-2xl"></div>
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Company Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                <span className="gradient-text">TangoDev</span>
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-6">
-                Transformamos ideas en experiencias digitales excepcionales. 
-                Especialistas en desarrollo web, diseño UI/UX y marketing digital.
-              </p>
-            </div>
+      {/* Main Footer Content */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+        {/* Top Section */}
+        <div className="py-16">
+          <div className="flex flex-col lg:flex-row gap-16">
+            
+            {/* Company Section - Flexible width */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="lg:w-2/5"
+            >
+              {/* Logo Section */}
+              <div className="mb-8">
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center mb-6"
+                >
+                  <img 
+                    src="/images/tangodevblanco.png" 
+                    alt="TangoDev Logo" 
+                    className="h-72 w-auto object-contain"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">info@tangodev.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">+54 11 1234-5678</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">Buenos Aires, Argentina</span>
-              </div>
-            </div>
+            {/* Right Section - Flexible width */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="lg:w-3/5"
+            >
+              <div className="flex flex-col lg:flex-row gap-12">
+                
+                {/* Links Section */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:w-2/3">
+                  {Object.entries(footerLinks).map(([category, links], index) => (
+                    <motion.div
+                      key={category}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <h4 className="text-lg font-semibold text-white mb-6 capitalize flex items-center">
+                        {category === 'servicios' && <Rocket className="w-5 h-5 text-blue-400 mr-2" />}
+                        {category === 'empresa' && <Heart className="w-5 h-5 text-red-400 mr-2" />}
+                        {category === 'legal' && <Zap className="w-5 h-5 text-yellow-400 mr-2" />}
+                        {category}
+                      </h4>
+                      <ul className="space-y-3">
+                        {links.map((link, linkIndex) => (
+                          <motion.li
+                            key={link.name}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: 0.6 + linkIndex * 0.05 }}
+                            viewport={{ once: true }}
+                          >
+                            <a
+                              href={link.href}
+                              className="text-gray-300 hover:text-blue-400 transition-all duration-300 text-sm hover:translate-x-2 transform inline-block group"
+                            >
+                              <span className="relative">
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                              </span>
+                            </a>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4 mt-6">
-              {socialLinks.map((social) => (
+                {/* Contact Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="lg:w-1/3"
+                >
+                  <h4 className="text-lg font-semibold text-white mb-6 flex items-center">
+                    <Zap className="w-5 h-5 text-blue-400 mr-2" />
+                    Contacto
+                  </h4>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-3 group">
+                      <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-200">
+                        <Mail className="w-5 h-5 text-blue-400" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Email</div>
+                        <div className="text-white text-sm">info@tangodev.com</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3 group">
+                      <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition-colors duration-200">
+                        <Phone className="w-5 h-5 text-green-400" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Teléfono</div>
+                        <div className="text-white text-sm">+54 11 1234-5678</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3 group">
+                      <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:bg-purple-500/30 transition-colors duration-200">
+                        <MapPin className="w-5 h-5 text-purple-400" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-400">Ubicación</div>
+                        <div className="text-white text-sm">Buenos Aires, Argentina 🇦🇷</div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Social Links Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
+          className="py-12 border-t border-gray-800/50"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div className="text-center md:text-left">
+              <h5 className="text-white font-semibold mb-3">Síguenos en redes sociales</h5>
+              <p className="text-gray-400 text-sm">Mantente conectado con las últimas novedades</p>
+            </div>
+            
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-blue-600/20 transition-all duration-200 border border-gray-700/30 hover:border-blue-500/30"
+                  className="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-blue-600/20 transition-all duration-300 border border-gray-700/30 hover:border-blue-500/30 group"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5 text-gray-300 hover:text-blue-400 transition-colors duration-200" />
+                  <social.icon className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" />
                 </motion.a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Footer Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-lg font-semibold text-white mb-4 capitalize">
-                {category}
-              </h4>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform duration-200 inline-block"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+          </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 1 }}
           viewport={{ once: true }}
-          className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+          className="py-6 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
         >
-          <p className="text-gray-400 text-sm">
-            © {currentYear} TangoDev. Todos los derechos reservados.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex items-center">
+            <p className="text-gray-400 text-sm">
+              © {currentYear} TangoDev. Todos los derechos reservados.
+            </p>
+          </div>
+          
+          <div className="flex items-center space-x-6">
             <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
               Términos de Servicio
             </a>
@@ -155,6 +240,21 @@ const Footer = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll to Top Button */}
+      <motion.button
+        onClick={scrollToTop}
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, delay: 1.2 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.1, y: -3 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50"
+        aria-label="Volver arriba"
+      >
+        <ArrowUp className="w-5 h-5" />
+      </motion.button>
     </footer>
   );
 };

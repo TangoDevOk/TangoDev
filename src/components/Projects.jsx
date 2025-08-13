@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye } from 'lucide-react';
+import { useScrollAnimation, staggerContainer, cardVariants, slideInLeft, slideInRight, scaleIn } from '../hooks/useScrollAnimation';
+import AnimatedText from './AnimatedText';
+import ImprovedScrollAnimated from './ImprovedScrollAnimated';
 
 const Projects = () => {
+  const { ref: headerRef, controls: headerControls } = useScrollAnimation(0.2, true);
+  const { ref: featuredRef, controls: featuredControls } = useScrollAnimation(0.1, true);
+  const { ref: allProjectsRef, controls: allProjectsControls } = useScrollAnimation(0.1, true);
+  const { ref: ctaRef, controls: ctaControls } = useScrollAnimation(0.1, true);
+
   const projects = [
     {
       title: 'E-commerce Moderno',
@@ -77,43 +85,84 @@ const Projects = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          ref={headerRef}
+          initial="hidden"
+          animate={headerControls}
+          variants={scaleIn}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Nuestros <span className="gradient-text">Proyectos</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            variants={{
+              hidden: { opacity: 0, y: 20, scale: 0.9 },
+              visible: { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }
+              }
+            }}
+          >
+            Nuestros <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Proyectos</span>
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: 0.2, duration: 0.6 }
+              }
+            }}
+          >
             Descubre algunos de nuestros proyectos más destacados que demuestran 
             nuestra capacidad para crear soluciones digitales innovadoras.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Featured Projects */}
-        <div className="mb-16">
+        <ImprovedScrollAnimated 
+          variants={staggerContainer}
+          className="mb-16"
+          threshold={0.1}
+          triggerOnce={true}
+        >
           <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
             className="text-2xl font-bold text-white mb-8 text-center"
+            variants={{
+              hidden: { opacity: 0, y: 20, scale: 0.9 },
+              visible: { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }
+              }
+            }}
           >
             Proyectos Destacados
           </motion.h3>
           
-          <div className="grid lg:grid-cols-3 gap-8">
+          <motion.div 
+            variants={staggerContainer}
+            className="grid lg:grid-cols-3 gap-8"
+          >
             {projects.filter(p => p.featured).map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="glass rounded-2xl overflow-hidden border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300 group"
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.2, ease: "easeOut" }
+                }}
+                className="rounded-2xl overflow-hidden border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300 group hover:shadow-2xl hover:shadow-blue-500/20"
               >
                 {/* Project Image */}
                 <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
@@ -177,31 +226,47 @@ const Projects = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </ImprovedScrollAnimated>
 
         {/* All Projects Grid */}
-        <div>
+        <ImprovedScrollAnimated
+          variants={staggerContainer}
+          threshold={0.1}
+          triggerOnce={true}
+        >
           <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
             className="text-2xl font-bold text-white mb-8 text-center"
+            variants={{
+              hidden: { opacity: 0, y: 20, scale: 0.9 },
+              visible: { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }
+              }
+            }}
           >
             Todos los Proyectos
           </motion.h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div 
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -3, scale: 1.01 }}
-                className="glass rounded-xl overflow-hidden border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300 group"
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -4, 
+                  scale: 1.01,
+                  transition: { duration: 0.2, ease: "easeOut" }
+                }}
+                className="rounded-xl overflow-hidden border border-gray-700/30 hover:border-blue-500/30 transition-all duration-300 group hover:shadow-xl hover:shadow-blue-500/10"
               >
                 {/* Project Image */}
                 <div className="relative h-40 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
@@ -270,34 +335,10 @@ const Projects = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </ImprovedScrollAnimated>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="glass rounded-2xl p-8 border border-blue-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              ¿Tienes un Proyecto en Mente?
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Estamos listos para ayudarte a crear algo increíble. 
-              Contáctanos para discutir tu próximo proyecto.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Iniciar Proyecto
-            </motion.button>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
