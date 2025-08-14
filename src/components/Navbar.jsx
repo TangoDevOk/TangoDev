@@ -6,11 +6,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Work', href: '#work' },
-    { name: 'Company', href: '#company' },
+    { name: 'Servicios', href: '#services' },
+    { name: 'Portafolio', href: '#portfolio' },
+    { name: 'Sobre Nosotros', href: '#about' },
     { name: 'Blog', href: '#blog' },
-    { name: 'Career', href: '#career' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contacto', href: '#contact' },
   ];
 
   return (
@@ -18,7 +18,7 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-white/10"
+      className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-slate-700/30"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -27,11 +27,18 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
           >
+<<<<<<< Updated upstream
             <img 
               src="/images/tangodevblanco.png" 
               alt="TangoDev Logo" 
               className="h-78 w-auto object-contain"
             />
+=======
+            <div className="w-8 h-8 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-4 h-4 bg-white rounded-sm"></div>
+            </div>
+            <span className="text-xl font-bold text-white">TangoDev</span>
+>>>>>>> Stashed changes
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -44,11 +51,11 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -2 }}
-                className="text-gray-300 hover:text-white font-medium transition-all duration-300 relative group"
+                className="text-slate-300 hover:text-white font-medium transition-all duration-300 relative group"
               >
                 {item.name}
                 <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-blue-500 group-hover:w-full transition-all duration-300"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                 />
@@ -62,7 +69,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="text-white hover:text-blue-400 transition-colors duration-200"
+              className="text-white hover:text-indigo-400 transition-colors duration-200"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -78,7 +85,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden glass-dark border-t border-white/10"
+            className="md:hidden glass-dark border-t border-slate-700/30"
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
@@ -88,7 +95,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="block text-gray-300 hover:text-white font-medium py-2 transition-colors duration-200 hover:translate-x-2 transform"
+                  className="block text-slate-300 hover:text-white font-medium py-2 transition-colors duration-200 hover:translate-x-2 transform"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

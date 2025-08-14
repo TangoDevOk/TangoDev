@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+<<<<<<< Updated upstream
 import { useScrollAnimation, staggerContainer, cardVariants, slideInLeft, slideInRight, scaleIn } from '../hooks/useScrollAnimation';
 import ScrollAnimated from './ScrollAnimated';
 import StableScrollAnimated from './StableScrollAnimated';
@@ -9,15 +10,64 @@ const Services = () => {
   const { ref: gridRef, controls: gridControls } = useScrollAnimation(0.1, true);
   const { ref: servicesRef, controls: servicesControls } = useScrollAnimation(0.1, true);
   const { ref: ctaRef, controls: ctaControls } = useScrollAnimation(0.1, true);
+=======
+import { Code, Palette, Zap, Globe, Rocket, Target, Layers, Coffee, Heart, Sparkles } from 'lucide-react';
+
+const Services = () => {
+  const services = [
+    {
+      icon: Code,
+      title: 'Desarrollo Web',
+      description: 'Sitios web que no solo se ven bien, sino que funcionan perfectamente.',
+      features: ['React & Next.js', 'Responsive Design', 'SEO Optimizado', 'Performance']
+    },
+    {
+      icon: Palette,
+      title: 'Diseño UI/UX',
+      description: 'Interfaces que la gente realmente quiere usar, no solo mirar.',
+      features: ['Diseño Personalizado', 'Prototipos Interactivos', 'User Testing', 'Iteración']
+    },
+    {
+      icon: Rocket,
+      title: 'Landing Pages',
+      description: 'Páginas que convierten visitantes en clientes, no solo en espectadores.',
+      features: ['Copy Persuasivo', 'A/B Testing', 'CRO', 'Analytics']
+    },
+    {
+      icon: Globe,
+      title: 'E-commerce',
+      description: 'Tiendas online que venden, no solo muestran productos.',
+      features: ['WooCommerce', 'Shopify', 'Pagos Seguros', 'Inventario']
+    },
+    {
+      icon: Zap,
+      title: 'Apps Móviles',
+      description: 'Aplicaciones que la gente usa todos los días, no solo descarga.',
+      features: ['React Native', 'PWA', 'App Store', 'Performance']
+    },
+    {
+      icon: Heart,
+      title: 'Consultoría',
+      description: 'Te ayudamos a tomar las decisiones correctas para tu proyecto.',
+      features: ['Auditoría Técnica', 'Arquitectura', 'Mentoría', 'Code Review']
+    }
+  ];
+>>>>>>> Stashed changes
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section id="services" className="py-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
+<<<<<<< Updated upstream
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-500/3 rounded-full blur-2xl"></div>
         <ParticleBackground />
+=======
+        <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-blue-500/3 rounded-full blur-2xl"></div>
+>>>>>>> Stashed changes
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,6 +79,7 @@ const Services = () => {
           variants={scaleIn}
           className="text-center mb-16"
         >
+<<<<<<< Updated upstream
           <motion.h2 
             className="text-2xl font-bold text-white uppercase tracking-wide"
             variants={{
@@ -406,6 +457,79 @@ const Services = () => {
         </StableScrollAnimated>
 
 
+=======
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            ¿Qué <span className="gradient-text">hacemos</span>?
+          </h2>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+            No somos una agencia corporativa. Somos freelancers que aman lo que hacen 
+            y quieren que tu proyecto sea increíble.
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -3, scale: 1.01 }}
+              className="glass rounded-xl p-6 border border-slate-700/30 hover:border-indigo-500/30 transition-all duration-300 group"
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mr-4 group-hover:from-indigo-500/30 group-hover:to-purple-500/30 transition-all duration-300">
+                  <service.icon className="w-6 h-6 text-indigo-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">{service.title}</h3>
+              </div>
+              
+              <p className="text-slate-300 mb-4 text-sm leading-relaxed">{service.description}</p>
+              
+              <ul className="space-y-2">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-center text-xs text-slate-400">
+                    <div className="w-1 h-1 bg-indigo-500 rounded-full mr-3"></div>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <div className="glass rounded-2xl p-8 border border-slate-700/30">
+            <div className="flex justify-center mb-4">
+              <Coffee className="w-8 h-8 text-amber-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              ¿Tomamos un café virtual?
+            </h3>
+            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
+              Cuéntanos sobre tu proyecto. No importa si es solo una idea o algo más elaborado. 
+              Te escuchamos sin compromiso.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-all duration-300 flex items-center space-x-2 mx-auto"
+            >
+              <span>Agendar llamada</span>
+              <Sparkles className="w-4 h-4" />
+            </motion.button>
+          </div>
+        </motion.div>
+>>>>>>> Stashed changes
       </div>
     </section>
   );
