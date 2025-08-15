@@ -1,260 +1,127 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, Heart, Zap, Rocket } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    servicios: [
-      { name: 'Diseño Web', href: '#services' },
-      { name: 'Desarrollo Web', href: '#services' },
-      { name: 'Diseño UI/UX', href: '#services' },
-      { name: 'SEO & Marketing', href: '#services' },
-      { name: 'Apps Móviles', href: '#services' }
-    ],
-    empresa: [
-      { name: 'Sobre Nosotros', href: '#about' },
-      { name: 'Nuestro Equipo', href: '#about' },
-              { name: 'Portafolio', href: '#projects' },
-      { name: 'Blog', href: '#' },
-      { name: 'Carreras', href: '#' }
-    ],
-    legal: [
-      { name: 'Términos de Servicio', href: '#' },
-      { name: 'Política de Privacidad', href: '#' },
-      { name: 'Cookies', href: '#' },
-      { name: 'Aviso Legal', href: '#' },
-      { name: 'FAQ', href: '#' }
-    ]
-  };
-
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' }
-      ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-green-500/3 rounded-full blur-2xl"></div>
-        </div>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        {/* Top Section */}
-        <div className="py-16">
-          <div className="flex flex-col lg:flex-row gap-16">
-            
-            {/* Company Section - Flexible width */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="lg:w-2/5"
-            >
-              {/* Logo Section */}
-              <div className="mb-8">
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="flex items-center mb-6"
-                >
-                  <img 
-                    src="/images/tangodevblanco.png" 
-                    alt="TangoDev Logo" 
-                    className="h-72 w-auto object-contain"
-                  />
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Right Section - Flexible width */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="lg:w-3/5"
-            >
-              <div className="flex flex-col lg:flex-row gap-12">
-                
-                {/* Links Section */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:w-2/3">
-                  {Object.entries(footerLinks).map(([category, links], index) => (
+    <footer className="w-full bg-black rounded-t-[3rem] font-plus-jakarta relative -mt-8 shadow-2xl">
+      {/* Borde superior sutil para conectar con FAQ */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-200 to-transparent"></div>
+      
+      {/* Efecto de sombra interna para profundidad */}
+      <div className="absolute inset-0 rounded-t-[3rem] bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+      
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-16">
+          {/* Lado izquierdo - App Download y Copyright */}
                     <motion.div
-                      key={category}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                       viewport={{ once: true }}
-                    >
-                      <h4 className="text-lg font-semibold text-white mb-6 capitalize flex items-center">
-                        {category === 'servicios' && <Rocket className="w-5 h-5 text-blue-400 mr-2" />}
-                        {category === 'empresa' && <Heart className="w-5 h-5 text-red-400 mr-2" />}
-                        {category === 'legal' && <Zap className="w-5 h-5 text-yellow-400 mr-2" />}
-                        {category}
-                      </h4>
-                      <ul className="space-y-3">
-                        {links.map((link, linkIndex) => (
-                          <motion.li
-                            key={link.name}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: 0.6 + linkIndex * 0.05 }}
-                            viewport={{ once: true }}
-                          >
-                            <a
-                              href={link.href}
-                              className="text-gray-300 hover:text-blue-400 transition-all duration-300 text-sm hover:translate-x-2 transform inline-block group"
-                            >
-                              <span className="relative">
-                                {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-                              </span>
-                            </a>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Contact Section */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="lg:w-1/3"
-                >
-                  <h4 className="text-lg font-semibold text-white mb-6 flex items-center">
-                    <Zap className="w-5 h-5 text-blue-400 mr-2" />
-                    Contacto
-                  </h4>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3 group">
-                      <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-200">
-                        <Mail className="w-5 h-5 text-blue-400" />
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-400">Email</div>
-                        <div className="text-white text-sm">tangodev08@gmail.com</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3 group">
-                      <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition-colors duration-200">
-                        <Phone className="w-5 h-5 text-green-400" />
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-400">Teléfono</div>
-                        <div className="text-white text-sm">+54 11 1234-5678</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3 group">
-                      <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:bg-purple-500/30 transition-colors duration-200">
-                        <MapPin className="w-5 h-5 text-purple-400" />
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-400">Ubicación</div>
-                        <div className="text-white text-sm">Buenos Aires, Argentina 🇦🇷</div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-white">
+                Descargá<br/>la app
+              </h3>
+              
+              {/* Botones de descarga */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="flex items-center justify-center gap-3 px-8 py-4 border border-white rounded-lg bg-black text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <span className="font-semibold text-lg">iOS</span>
+                </button>
+                
+                <button className="flex items-center justify-center gap-3 px-8 py-4 border border-white rounded-lg bg-black text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.523 15.3414c-.5511 0-.9999-.4486-.9999-.9997s.4488-.9997.9999-.9997c.5511 0 .9999.4486.9999.9997s-.4488.9997-.9999.9997m-5.01 0c-.5511 0-.9999-.4486-.9999-.9997s.4488-.9997.9999-.9997.9999.4486.9999.9997-.4488.9997-.9999.9997m5.0199-6.2136h-4.8066c-.3098 0-.5606-.2508-.5606-.5606V3.5859c0-.3098.2508-.5606.5606-.5606h4.8066c.3098 0 .5606.2508.5606.5606v4.9809c0 .3098-.2508.5606-.5606.5606M12.5133 15.3414c-.5511 0-.9999-.4486-.9999-.9997s.4488-.9997.9999-.9997.9999.4486.9999.9997-.4488.9997-.9999.9997M8.5098 15.3414c-.5511 0-.9999-.4486-.9999-.9997s.4488-.9997.9999-.9997.9999.4486.9999.9997-.4488.9997-.9999.9997m-4.0059 0c-.5511 0-.9999-.4486-.9999-.9997s.4488-.9997.9999-.9997.9999.4486.9999.9997-.4488.9997-.9999.9997m8.0156-6.2136H7.5039c-.3098 0-.5606-.2508-.5606-.5606V3.5859c0-.3098.2508-.5606.5606-.5606h4.9809c.3098 0 .5606.2508.5606.5606v4.9809c0 .3098-.2508.5606-.5606.5606m-8.0156 0H3.5039c-.3098 0-.5606-.2508-.5606-.5606V3.5859c0-.3098.2508-.5606.5606-.5606h4.9809c.3098 0 .5606.2508.5606.5606v4.9809c0 .3098-.2508.5606-.5606.5606"/>
+                  </svg>
+                  <span className="font-semibold text-lg">Android</span>
+                </button>
           </div>
         </div>
 
-        {/* Social Links Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="py-12 border-t border-gray-800/50"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <div className="text-center md:text-left">
-              <h5 className="text-white font-semibold mb-3">Síguenos en redes sociales</h5>
-              <p className="text-gray-400 text-sm">Mantente conectado con las últimas novedades</p>
+            {/* Copyright y Privacy Policy */}
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+              <div className="text-sm">
+                <span className="text-gray-300">
+                  © {currentYear} TANGODEV. Todos los derechos reservados.
+                </span>
             </div>
-            
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-blue-600/20 transition-all duration-300 border border-gray-700/30 hover:border-blue-500/30 group"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" />
-                </motion.a>
-              ))}
+              <div className="text-sm">
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Privacy Policy
+                </a>
             </div>
           </div>
         </motion.div>
 
-        {/* Bottom Bar */}
+          {/* Lado derecho - Contacto y Redes */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="py-6 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
-        >
-          <div className="flex items-center">
-            <p className="text-gray-400 text-sm">
-              © {currentYear} TangoDev. Todos los derechos reservados.
-            </p>
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
+          >
+            {/* Contacto */}
+            <div className="space-y-3">
+              <p className="text-white font-medium text-lg">
+                Por consultas, devoluciones o situaciones técnicas:
+              </p>
+              <a href="mailto:tangodev08@gmail.com" className="text-gray-300 hover:text-white transition-colors text-lg">
+                tangodev08@gmail.com
+              </a>
           </div>
           
-          <div className="flex items-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
-              Términos de Servicio
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
-              Política de Privacidad
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors duration-200">
-              Cookies
-            </a>
+            {/* Redes sociales */}
+            <div className="space-y-4">
+              <p className="text-white font-medium text-lg">
+                Seguinos en nuestras redes
+              </p>
+              <div className="flex gap-5">
+                {/* Instagram */}
+                <a href="#" className="w-12 h-12 border border-white rounded-lg flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                
+                {/* X (Twitter) */}
+                <a href="#" className="w-12 h-12 border border-white rounded-lg flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+                
+                {/* LinkedIn */}
+                <a href="#" className="w-12 h-12 border border-white rounded-lg flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                
+                {/* TikTok */}
+                <a href="#" className="w-12 h-12 border border-white rounded-lg flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
+                </a>
+                
+                {/* YouTube */}
+                <a href="#" className="w-12 h-12 border border-white rounded-lg flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-200">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+              </div>
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 1.2 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.1, y: -3 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50"
-        aria-label="Volver arriba"
-      >
-        <ArrowUp className="w-5 h-5" />
-      </motion.button>
+      </div>
     </footer>
   );
 };
