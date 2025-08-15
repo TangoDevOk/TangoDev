@@ -10,6 +10,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -39,6 +40,7 @@ function App() {
           <Contact />
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </Router>
   );

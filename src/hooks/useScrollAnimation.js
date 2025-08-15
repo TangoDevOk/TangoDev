@@ -1,6 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useScrollAnimation = (threshold = 0.1, triggerOnce = false) => {
   const controls = useAnimation();
@@ -159,4 +159,25 @@ export const textReveal = {
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   },
+};
+
+// Hook para detectar scroll
+export const useScrollDetection = (threshold = 100) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Verificar el estado inicial
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [threshold]);
+
+  return isScrolled;
 };

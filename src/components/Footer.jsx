@@ -1,30 +1,29 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Github, ArrowUp, Heart, Zap, Rocket } from 'lucide-react';
+import { Rocket, Heart, Zap, Mail, Phone, MapPin, ArrowUp, Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     servicios: [
-      { name: 'Diseño Web', href: '#services' },
-      { name: 'Desarrollo Web', href: '#services' },
-      { name: 'Diseño UI/UX', href: '#services' },
-      { name: 'SEO & Marketing', href: '#services' },
-      { name: 'Apps Móviles', href: '#services' }
+      { name: 'Desarrollo Web', href: '#web-development' },
+      { name: 'Aplicaciones Móviles', href: '#mobile-apps' },
+      { name: 'Diseño UI/UX', href: '#ui-ux-design' },
+      { name: 'Consultoría IT', href: '#it-consulting' },
+      { name: 'Mantenimiento', href: '#maintenance' }
     ],
     empresa: [
       { name: 'Sobre Nosotros', href: '#about' },
-      { name: 'Nuestro Equipo', href: '#about' },
-              { name: 'Portafolio', href: '#projects' },
-      { name: 'Blog', href: '#' },
-      { name: 'Carreras', href: '#' }
+      { name: 'Nuestro Equipo', href: '#team' },
+      { name: 'Carreras', href: '#careers' },
+      { name: 'Blog', href: '#blog' },
+      { name: 'Contacto', href: '#contact' }
     ],
     legal: [
-      { name: 'Términos de Servicio', href: '#' },
-      { name: 'Política de Privacidad', href: '#' },
-      { name: 'Cookies', href: '#' },
-      { name: 'Aviso Legal', href: '#' },
-      { name: 'FAQ', href: '#' }
+      { name: 'Términos de Servicio', href: '#terms' },
+      { name: 'Política de Privacidad', href: '#privacy' },
+      { name: 'Cookies', href: '#cookies' },
+      { name: 'Licencias', href: '#licenses' }
     ]
   };
 
@@ -34,11 +33,7 @@ const Footer = () => {
     { icon: Instagram, href: '#', label: 'Instagram' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Github, href: '#', label: 'GitHub' }
-      ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  ];
 
   return (
     <footer className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white overflow-hidden">
@@ -72,7 +67,7 @@ const Footer = () => {
                   className="flex items-center mb-6"
                 >
                   <img 
-                    src="/images/tangodevblanco.png" 
+                    src="/images/tangodev1blanco.png" 
                     alt="TangoDev Logo" 
                     className="h-72 w-auto object-contain"
                   />
@@ -133,14 +128,14 @@ const Footer = () => {
 
                 {/* Contact Section */}
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
                   viewport={{ once: true }}
                   className="lg:w-1/3"
                 >
                   <h4 className="text-lg font-semibold text-white mb-6 flex items-center">
-                    <Zap className="w-5 h-5 text-blue-400 mr-2" />
+                    <Mail className="w-5 h-5 text-green-400 mr-2" />
                     Contacto
                   </h4>
                   <div className="space-y-4">
@@ -240,21 +235,6 @@ const Footer = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 1.2 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.1, y: -3 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50"
-        aria-label="Volver arriba"
-      >
-        <ArrowUp className="w-5 h-5" />
-      </motion.button>
     </footer>
   );
 };
