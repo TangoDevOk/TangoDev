@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles, ArrowDown } from 'lucide-react';
 import LightRays from './LightRays';
 import { useState, useEffect } from 'react';
 
@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#00ffff"
+          raysColor="#f8faff"
           raysSpeed={1.5}
           lightSpread={0.8}
           rayLength={1.2}
@@ -33,16 +33,16 @@ const Hero = () => {
       </div>
 
       {/* Main Content Container - Centered like React Bits */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 -mt-20">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
         {/* New Background Button */}
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center space-x-2 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 mb-4 hover:bg-neutral-900/20 transition-colors duration-300"
+          className="inline-flex items-center space-x-3 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 mb-8 hover:bg-neutral-900/20 transition-colors duration-300"
         >
-          <Sparkles className="w-4 h-4 text-slate-300" />
-          <span className="text-sm text-slate-300 font-medium">Desarrollo Web</span>
+          <Sparkles className="w-5 h-5 text-slate-300" />
+          <span className="text-base text-slate-300 font-medium">Desarrollo Web</span>
         </motion.button>
 
         {/* Main Headline - EFECTO SUTIL EN "DIGITAL/REAL" */}
@@ -50,7 +50,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-2xl md:text-4xl lg:text-6xl font-bold text-center mb-12 max-w-4xl"
+          className="text-3xl md:text-5xl lg:text-7xl font-bold text-center mb-10 max-w-5xl"
         >
           <span className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
             Iluminamos tu camino
@@ -76,7 +76,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-slate-300 text-center mb-8 max-w-4xl leading-relaxed"
+          className="text-xl md:text-2xl text-slate-300 text-center mb-10 max-w-5xl leading-relaxed"
         >
           Servicios web rápidos, seguros y a tu medida para que tu idea crezca online.
         </motion.p>
@@ -86,76 +86,46 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8"
         >
+          {/* Primary CTA */}
           <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-8 py-4 bg-slate-200 text-slate-900 font-semibold rounded-full hover:bg-white transition-colors duration-300 shadow-sm"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center space-x-3 bg-white text-black px-10 py-5 rounded-full font-semibold hover:bg-slate-100 transition-colors duration-300 shadow-lg hover:shadow-xl text-lg"
           >
-            Comenzar
+            <span>Comenzar Proyecto</span>
+            <ArrowRight className="w-6 h-6" />
           </motion.button>
+
+          {/* Secondary CTA */}
           <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-8 py-4 bg-neutral-900/10 backdrop-blur-md border border-white/30 text-slate-300 font-semibold rounded-full hover:bg-neutral-900/20 hover:text-white transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center space-x-3 bg-transparent text-white border-2 border-white/30 px-10 py-5 rounded-full font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-lg"
           >
-            Saber más
+            <span>Ver Portafolio</span>
+            <ArrowRight className="w-6 h-6" />
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Bottom Right Demo Control */}
-      {/*     <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.0 }}
-          className="absolute bottom-8 right-8 z-10 flex items-center space-x-3 text-slate-400"
-        >
-          <span className="text-sm">Demo Content</span>
-          <div className="w-12 h-6 bg-slate-700 rounded-full p-1">
-            <div className="w-4 h-4 bg-slate-500 rounded-full"></div>
-          </div>
-        </motion.div> */}
-
       {/* Flecha de Scroll Estilo iOS */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 2.0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
-        <motion.button
-          onClick={() => {
-            document.getElementById('services')?.scrollIntoView({ 
-              behavior: 'smooth' 
-            });
-          }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="group"
-        >
-          {/* Flecha principal */}
+        <div className="w-12 h-12 bg-transparent border-2 border-white/30 rounded-full flex items-center justify-center hover:bg-white/10 hover:border-white/50 transition-all duration-300">
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:border-white/30 transition-all duration-300"
+            animate={{ y: [0, 4, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-white"
           >
-            <svg 
-              className="w-5 h-5 text-white" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-              />
-            </svg>
+            <ArrowDown className="w-5 h-5" />
           </motion.div>
-        </motion.button>
+        </div>
       </motion.div>
     </section>
   );

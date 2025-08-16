@@ -49,10 +49,7 @@ const ProjectMosaic = () => {
   ];
 
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
-      
+    <section className="py-32 bg-black relative overflow-hidden">
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -62,15 +59,27 @@ const ProjectMosaic = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <motion.h2 
+            className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          >
             Nuestros{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
               Proyectos
             </span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg md:text-xl lg:text-2xl text-slate-400 leading-relaxed max-w-3xl mx-auto"
+          >
             Descubre algunos de nuestros trabajos más destacados que hemos desarrollado para nuestros clientes
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Projects Grid adaptado al layout de la imagen */}
@@ -160,13 +169,13 @@ const ProjectMosaic = () => {
           </motion.div>
 
           {/* Fila 3 */}
-          {/* Imagen cuadrada (monitor) */}
+          {/* Imagen grande horizontal (izquierda, ocupa 2 columnas en fila 3) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
-            className="col-span-1 row-span-1 group relative overflow-hidden rounded-2xl"
+            className="col-span-2 row-span-1 group relative overflow-hidden rounded-2xl"
           >
             <div className="w-full h-full overflow-hidden">
               <img
@@ -176,23 +185,8 @@ const ProjectMosaic = () => {
               />
             </div>
           </motion.div>
-          {/* Imagen cuadrada (usuario 3) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            viewport={{ once: true }}
-            className="col-span-1 row-span-1 group relative overflow-hidden rounded-2xl"
-          >
-            <div className="w-full h-full overflow-hidden">
-              <img
-                src={projects[6].image}
-                alt={projects[6].name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-            </div>
-          </motion.div>
-          {/* Imagen grande horizontal (misma que arriba, columna 3 y 4, fila 3) */}
+
+          {/* Imagen grande horizontal (derecha, ocupa 2 columnas en fila 3) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -221,10 +215,10 @@ const ProjectMosaic = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center space-x-3 bg-white text-black px-10 py-5 rounded-full font-semibold hover:bg-slate-100 transition-colors duration-300 shadow-lg hover:shadow-xl text-lg"
           >
             <span>Ver Todos los Proyectos</span>
-            <ExternalLink className="w-5 h-5" />
+            <ExternalLink className="w-6 h-6" />
           </motion.button>
         </motion.div>
       </div>

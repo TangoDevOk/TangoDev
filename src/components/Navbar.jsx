@@ -36,25 +36,24 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ 
-        y: 0, 
-        opacity: isVisible ? 1 : 0,
-        scale: isVisible ? 1 : 0.95
-      }}
-      transition={{ 
-        duration: 0.3, 
-        ease: "easeOut",
-        opacity: { duration: 0.4 },
-        scale: { duration: 0.4 }
-      }}
-      className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
-    >
-      {/* Navbar Container - MUCHO MÁS ANCHO horizontalmente */}
-      <div className="bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-12 py-2 flex items-center justify-between min-w-[1000px] shadow-lg">
-        {/* Logo */}
-        <motion.div 
+    <>
+      {/* Logo separado a la izquierda */}
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ 
+          y: 0, 
+          opacity: isVisible ? 1 : 0,
+          scale: isVisible ? 1 : 0.95
+        }}
+        transition={{ 
+          duration: 0.3, 
+          ease: "easeOut",
+          opacity: { duration: 0.4 },
+          scale: { duration: 0.4 }
+        }}
+        className="fixed top-8 left-8 z-50"
+      >
+        <motion.div
           whileHover={{ scale: 1.05 }}
           className="flex items-center"
         >
@@ -64,29 +63,49 @@ const Navbar = () => {
             className="h-8 w-auto object-contain"
           />
         </motion.div>
+      </motion.div>
 
-        {/* Navigation Links */}
-        <div className="flex items-center space-x-12">
-          {navItems.map((item, index) => (
-            <motion.a
-              key={item.name}
-              href={item.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -1 }}
-              className={`text-base font-medium transition-all duration-300 ${
-                item.name === 'Servicios' 
-                  ? 'text-white bg-neutral-900/20 backdrop-blur-sm px-6 py-3 rounded-full' 
-                  : 'text-white hover:text-slate-200'
-              }`}
-            >
-              {item.name}
-            </motion.a>
-          ))}
+      {/* Navbar centrada */}
+      <motion.nav 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ 
+          y: 0, 
+          opacity: isVisible ? 1 : 0,
+          scale: isVisible ? 1 : 0.95
+        }}
+        transition={{ 
+          duration: 0.3, 
+          ease: "easeOut",
+          opacity: { duration: 0.4 },
+          scale: { duration: 0.4 }
+        }}
+        className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
+      >
+        {/* Navbar Container - Solo navegación centrada */}
+        <div className="bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-12 py-2 flex items-center justify-center min-w-[800px] shadow-lg">
+          {/* Navigation Links - Centrados */}
+          <div className="flex items-center space-x-12">
+            {navItems.map((item, index) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -1 }}
+                className={`text-base font-medium transition-all duration-300 px-6 py-3 rounded-full ${
+                  item.name === 'Inicio' 
+                    ? 'bg-white text-slate-900 shadow-sm' 
+                    : 'text-white hover:text-slate-200'
+                }`}
+              >
+                {item.name}
+              </motion.a>
+            ))}
+          </div>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
+    </>
   );
 };
 
