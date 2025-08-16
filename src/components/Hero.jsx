@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#00ffff"
+          raysColor="#f8faff"
           raysSpeed={1.5}
           lightSpread={0.8}
           rayLength={1.2}
@@ -39,7 +39,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center space-x-2 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 mb-4 hover:bg-neutral-900/20 transition-colors duration-300"
+          className="inline-flex items-center space-x-2 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 mb-6 hover:bg-neutral-900/20 transition-colors duration-300"
         >
           <Sparkles className="w-4 h-4 text-slate-300" />
           <span className="text-sm text-slate-300 font-medium">Desarrollo Web</span>
@@ -50,7 +50,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-2xl md:text-4xl lg:text-6xl font-bold text-center mb-12 max-w-4xl"
+          className="text-2xl md:text-4xl lg:text-6xl font-bold text-center mb-8 max-w-4xl"
         >
           <span className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
             Iluminamos tu camino
@@ -76,7 +76,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-slate-300 text-center mb-12 max-w-4xl leading-relaxed"
+          className="text-lg md:text-xl text-slate-300 text-center mb-8 max-w-4xl leading-relaxed"
         >
           Servicios web rápidos, seguros y a tu medida para que tu idea crezca online.
         </motion.p>

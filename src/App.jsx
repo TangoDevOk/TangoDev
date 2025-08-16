@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Pricing from './components/Pricing';
+import Testimonials from './components/Testimonials';
 import Results from './components/Results';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
@@ -21,10 +23,8 @@ function App() {
           <Services />
           <Projects />
           <Pricing />
+          <Testimonials />
           <Results />
-   {/*        <CapabilitiesSlider />
-          <About />
-          <Contact /> */}
         </main>
         <Footer />
       </div>
