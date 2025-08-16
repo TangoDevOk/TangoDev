@@ -14,10 +14,10 @@ const Footer = () => {
       <div className="w-full px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-16">
           {/* Lado izquierdo - App Download y Copyright */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
@@ -41,8 +41,8 @@ const Footer = () => {
                   </svg>
                   <span className="font-semibold text-lg">Android</span>
                 </button>
-          </div>
-        </div>
+              </div>
+            </div>
 
             {/* Copyright y Privacy Policy */}
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
@@ -50,20 +50,20 @@ const Footer = () => {
                 <span className="text-gray-300">
                   © {currentYear} TANGODEV. Todos los derechos reservados.
                 </span>
-            </div>
+              </div>
               <div className="text-sm">
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
                   Privacy Policy
                 </a>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
           {/* Lado derecho - Contacto y Redes */}
-        <motion.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
           >
@@ -75,8 +75,8 @@ const Footer = () => {
               <a href="mailto:tangodev08@gmail.com" className="text-gray-300 hover:text-white transition-colors text-lg">
                 tangodev08@gmail.com
               </a>
-          </div>
-          
+            </div>
+            
             {/* Redes sociales */}
             <div className="space-y-4">
               <p className="text-white font-medium text-lg">
@@ -118,9 +118,9 @@ const Footer = () => {
                   </svg>
                 </a>
               </div>
-          </div>
-        </motion.div>
-      </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </footer>
   );
