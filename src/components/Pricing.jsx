@@ -66,7 +66,7 @@ const Pricing = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-[15rem] md:text-[18rem] lg:text-[20rem] font-bold tracking-wider select-none"
+          className="text-[15rem] md:text-[18rem] lg:text-[20rem] font-black tracking-tight select-none text-white/85"
         >
           Precios
         </motion.h2>

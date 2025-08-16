@@ -36,22 +36,52 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ 
-        y: 0, 
-        opacity: isVisible ? 1 : 0,
-        scale: isVisible ? 1 : 0.95
-      }}
-      transition={{ 
-        duration: 0.3, 
-        ease: "easeOut",
-        opacity: { duration: 0.4 },
-        scale: { duration: 0.4 }
-      }}
-      className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
-    >
-             {/* Navbar Container - Centrado */}
+    <>
+      {/* Logo separado a la izquierda */}
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ 
+          y: 0, 
+          opacity: isVisible ? 1 : 0,
+          scale: isVisible ? 1 : 0.95
+        }}
+        transition={{ 
+          duration: 0.3, 
+          ease: "easeOut",
+          opacity: { duration: 0.4 },
+          scale: { duration: 0.4 }
+        }}
+        className="fixed top-8 left-8 z-50"
+      >
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="flex items-center"
+        >
+                                                                                                                                                                                                                                                                                                                                                               <img
+                 src="/src/assets/tangodev1blancoo.png"
+                 alt="TangoDev Logo"
+                 className="object-contain h-10 w-auto"
+               />
+        </motion.div>
+      </motion.div>
+
+      {/* Navbar centrada */}
+      <motion.nav 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ 
+          y: 0, 
+          opacity: isVisible ? 1 : 0,
+          scale: isVisible ? 1 : 0.95
+        }}
+        transition={{ 
+          duration: 0.3, 
+          ease: "easeOut",
+          opacity: { duration: 0.4 },
+          scale: { duration: 0.4 }
+        }}
+        className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
+      >
+             {/* Navbar Container - Solo navegación centrada */}
        <div className="bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-12 py-2 flex items-center justify-center min-w-[800px] shadow-lg">
          {/* Navigation Links - Centrados */}
          <div className="flex items-center space-x-12">
@@ -72,9 +102,10 @@ const Navbar = () => {
                {item.name}
              </motion.a>
            ))}
-         </div>
+                  </div>
        </div>
-    </motion.nav>
+     </motion.nav>
+    </>
   );
 };
 

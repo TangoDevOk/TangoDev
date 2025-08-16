@@ -14,12 +14,18 @@ const Testimonials = () => {
       role: "Founder, DigitalAgency",
       content: "Increíble experiencia trabajando con TangoDev. Desarrollaron nuestra aplicación SaaS en tiempo récord, con funcionalidades avanzadas.",
       avatar: "CR"
+    },
+    {
+      name: "Ana Martínez",
+      role: "Marketing Manager, E-Commerce",
+      content: "La plataforma que desarrollaron para nosotros aumentó nuestras ventas en un 200%. El diseño es intuitivo y la funcionalidad es perfecta.",
+      avatar: "AM"
     }
   ];
 
   return (
     <section id="testimonials" className="py-32 bg-black relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-8">
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
@@ -69,7 +75,7 @@ const Testimonials = () => {
           </div>
 
           {/* Right Column - Testimonial Cards */}
-          <div className="space-y-6">
+          <div className="space-y-6 w-full">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -80,7 +86,7 @@ const Testimonials = () => {
                 className="group"
               >
                 {/* Glassmorphism Card */}
-                <div className="relative bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:shadow-xl">
+                <div className="relative bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:shadow-xl w-full">
                   
                   {/* User Label */}
                   <div className="text-white/60 text-sm mb-3">Usuario</div>
