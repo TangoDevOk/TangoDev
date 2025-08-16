@@ -4,23 +4,23 @@ const ProcessTimeline = () => {
   const processSteps = [
     {
       number: "01",
-      title: "Contact me",
-      description: "Donec sodales sagittis magna. Cras dapibus. Praesent ut ligula non mi varius sagittis."
+      title: "Contacto",
+      description: "Nos reunimos contigo para entender tus necesidades y objetivos."
     },
     {
       number: "02",
-      title: "Research",
-      description: "Donec sodales sagittis magna. Cras dapibus. Praesent ut ligula non mi varius sagittis."
+      title: "Investigación",
+      description: "Analizamos el mercado y definimos la mejor estrategia para tu proyecto."
     },
     {
       number: "03",
-      title: "Work",
-      description: "Donec sodales sagittis magna. Cras dapibus. Praesent ut ligula non mi varius sagittis."
+      title: "Desarrollo",
+      description: "Diseñamos y desarrollamos la solución adaptada a tu negocio."
     },
     {
       number: "04",
-      title: "Test & results",
-      description: "Donec sodales sagittis magna. Cras dapibus. Praesent ut ligula non mi varius sagittis."
+      title: "Entrega y Resultados",
+      description: "Lanzamos el producto, medimos resultados y optimizamos juntos."
     }
   ];
 
@@ -41,8 +41,9 @@ const ProcessTimeline = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
+            style={{fontFamily: 'Montserrat, Arial, sans-serif'}}
           >
-            Proven process for success
+            Nuestro proceso de trabajo
           </motion.h3>
           
           <motion.p
@@ -52,35 +53,50 @@ const ProcessTimeline = () => {
             viewport={{ once: true }}
             className="text-lg text-gray-300 mb-16"
           >
-            We help you on every step of the journey
+            Te acompañamos en cada etapa para lograr el éxito de tu proyecto
           </motion.p>
 
-          {/* Process Timeline */}
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-8 left-0 right-0 h-px bg-gray-700"></div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  {/* Timeline Dot */}
-                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full z-10"></div>
-                  
-                  <div className="text-center pt-8">
-                    <div className="text-6xl font-bold text-gray-700 mb-4">{step.number}</div>
-                    <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+          {/* Timeline visual fiel a la imagen */}
+          <div className="relative w-full max-w-5xl mx-auto pt-2">
+            {/* Línea horizontal detrás de los puntos */}
+            <div className="absolute left-30 right-30 top-[72px] md:top-[92px] h-0.5 bg-gray-500 opacity-70 z-0"></div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-0 relative z-10">
+              {processSteps.map((step, i) => (
+                <div key={step.number} className="flex flex-col items-center text-center px-2">
+                  {/* Número */}
+                  <div
+                    className="text-[2.8rem] md:text-[4.5rem] font-bold"
+                    style={{
+                      color: '#bdbdbd',
+                      fontFamily: 'Montserrat, Arial, sans-serif',
+                      letterSpacing: '-2px',
+                      lineHeight: 1,
+                      marginBottom: '0.2rem',
+                      marginTop: 0
+                    }}
+                  >
+                    {step.number}
                   </div>
-                </motion.div>
+                  {/* Punto blanco */}
+                  <div
+                    className="w-3 h-3 md:w-4 md:h-4 rounded-full mb-4"
+                    style={{
+                      background: '#fff',
+                      border: '2px solid #222',
+                      boxShadow: '0 0 0 2px #181818',
+                      marginTop: '0.2rem',
+                      marginBottom: '1.2rem'
+                    }}
+                  ></div>
+                  {/* Título */}
+                  <div className="font-bold text-base md:text-lg text-white mb-1" style={{fontFamily: 'Montserrat, Arial, sans-serif'}}>{step.title}</div>
+                  {/* Descripción */}
+                  <div className="text-xs md:text-sm text-gray-200 max-w-xs mx-auto" style={{fontFamily: 'Montserrat, Arial, sans-serif'}}>{step.description}</div>
+                </div>
               ))}
             </div>
+            {/* Espacio para que la timeline no tape el contenido */}
+            <div className="invisible md:visible" style={{height: '180px'}}></div>
           </div>
         </motion.div>
       </div>
@@ -89,4 +105,5 @@ const ProcessTimeline = () => {
 };
 
 export default ProcessTimeline;
+
 

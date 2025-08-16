@@ -10,6 +10,9 @@ const Navbar = () => {
   const navItems = [
     { name: 'Inicio', href: '#home' },
     { name: 'Servicios', href: '#services' },
+    { name: 'Proyectos', href: '#services' },
+    { name: 'Precios', href: '#services' },
+    { name: 'Contacto', href: '#services' },
   ];
 
   useEffect(() => {
@@ -55,11 +58,11 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           className="flex items-center"
         >
-                     <img 
-             src="/images/tangodev1blanco.png" 
-             alt="TangoDev Logo" 
-             className="h-8 w-auto object-contain"
-           />
+          <img 
+            src="/images/tangodev1blanco.png" 
+            alt="TangoDev Logo" 
+            className="h-8 w-auto object-contain"
+          />
         </motion.div>
 
         {/* Navigation Links */}
