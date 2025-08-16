@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen] = useState(false);
@@ -53,12 +53,13 @@ const Navbar = () => {
         {/* Logo */}
         <motion.div 
           whileHover={{ scale: 1.05 }}
-          className="flex items-center space-x-4"
+          className="flex items-center"
         >
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
-            <Sparkles className="w-5 h-5 text-slate-800" />
-          </div>
-          <span className="text-white font-medium text-lg">TangoDev</span>
+                     <img 
+             src="/images/tangodev1blanco.png" 
+             alt="TangoDev Logo" 
+             className="h-8 w-auto object-contain"
+           />
         </motion.div>
 
         {/* Navigation Links */}

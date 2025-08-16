@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import ProcessTimeline from './components/ProcessTimeline';
 import Projects from './components/Projects';
 import Pricing from './components/Pricing';
 import Results from './components/Results';
@@ -17,13 +18,14 @@ function App() {
         <ScrollProgress />
         
         <Navbar />
-        <main className="relative">
+                <main className="relative">
           <Hero />
           <Services />
+          <ProcessTimeline />
           <Projects />
           <Pricing />
           <Results />
-   {/*        <CapabilitiesSlider />
+    {/*        <CapabilitiesSlider />
           <About />
           <Contact /> */}
         </main>
