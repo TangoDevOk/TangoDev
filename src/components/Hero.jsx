@@ -1,19 +1,9 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, ArrowDown } from 'lucide-react';
 import LightRays from './LightRays';
-import { useState, useEffect } from 'react';
+import TextType from './TextType';
 
 const Hero = () => {
-  const [isDigital, setIsDigital] = useState(true);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsDigital(prev => !prev);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative min-h-screen bg-black overflow-hidden">
       {/* Light Rays Effect - EXACTLY as in React Bits */}
@@ -45,30 +35,27 @@ const Hero = () => {
           <span className="text-base text-slate-300 font-medium">Desarrollo Web</span>
         </motion.button>
 
-        {/* Main Headline - EFECTO SUTIL EN "DIGITAL/REAL" */}
+        {/* Main Headline - EFECTO DE ESCRITURA */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="text-3xl md:text-5xl lg:text-7xl font-bold text-center mb-10 max-w-5xl"
         >
-          <span className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-            Iluminamos tu camino
-          </span>
-          <br />
-          <span className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-            en el mundo{' '}
-            <motion.span
-              key={isDigital ? 'digital' : 'real'}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
-            >
-              {isDigital ? 'digital' : 'real'}
-            </motion.span>
-          </span>
+          <TextType 
+            text={[
+              "Iluminamos tu camino en el mundo digital",
+              "Iluminamos tu camino en el mundo real",
+              "Iluminamos tu camino en el mundo web"
+            ]}
+            typingSpeed={100}
+            pauseDuration={3000}
+            deletingSpeed={50}
+            showCursor={true}
+            cursorCharacter="|"
+            cursorClassName="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent"
+            className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+          />
         </motion.h1>
 
         {/* Subtitle */}

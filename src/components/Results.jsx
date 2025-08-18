@@ -41,8 +41,8 @@ const Results = () => {
   };
 
   return (
-    <section id="faq" className="py-32 bg-black relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="min-h-screen bg-black relative flex items-center justify-center py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header Section - Centered */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

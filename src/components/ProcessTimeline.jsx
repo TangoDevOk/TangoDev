@@ -25,8 +25,8 @@ const ProcessTimeline = () => {
   ];
 
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Process Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

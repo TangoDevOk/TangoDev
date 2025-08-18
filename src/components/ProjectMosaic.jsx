@@ -49,7 +49,7 @@ const ProjectMosaic = () => {
   ];
 
   return (
-    <section className="py-32 bg-black relative overflow-hidden">
+    <section className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center py-20">
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

@@ -24,8 +24,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-32 bg-black relative">
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="testimonials" className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
