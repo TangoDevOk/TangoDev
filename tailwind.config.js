@@ -33,7 +33,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Gilroy', 'Inter', 'system-ui', 'sans-serif'],
+        gilroy: ['Gilroy', 'system-ui', 'sans-serif'],
+        'gilroy-bold': ['Gilroy-Bold', 'system-ui', 'sans-serif'],
+        'gilroy-extrabold': ['Gilroy-ExtraBold', 'system-ui', 'sans-serif'],
+        'gilroy-black': ['Gilroy-Black', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

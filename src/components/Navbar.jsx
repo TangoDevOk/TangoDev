@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
@@ -17,23 +17,15 @@ const Navbar = () => {
     { name: 'Contacto', href: '/contact' },
   ];
 
+  // Handle scroll visibility
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Solo mostrar navbar en el Hero (primeros 200px)
-      if (currentScrollY < 200) {
-        setIsVisible(true);
-      } else {
-        // En todas las demás secciones, mantener oculto
-        setIsVisible(false);
-      }
-      
+      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 100);
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
@@ -112,8 +104,102 @@ const Navbar = () => {
           </div>
         </div>
       </motion.nav>
+
+      {/* Mobile Menu Button */}
+      <motion.button
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ 
+          y: 0, 
+          opacity: isVisible ? 1 : 0,
+          scale: isVisible ? 1 : 0.95
+        }}
+        transition={{ 
+          duration: 0.3, 
+          ease: "easeOut",
+          opacity: { duration: 0.4 },
+          scale: { duration: 0.4 }
+        }}
+        className="fixed top-8 right-8 z-50 md:hidden"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="w-10 h-10 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X className="w-5 h-5 text-white" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Menu className="w-5 h-5 text-white" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.button>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden"
+          >
+            <div 
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="absolute right-0 top-0 h-full w-80 bg-neutral-900/95 backdrop-blur-md border-l border-white/20 p-8"
+            >
+              <div className="flex flex-col space-y-6 mt-20">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-xl font-medium transition-all duration-300 block py-3 ${
+                        location.pathname === item.href
+                          ? 'text-white' 
+                          : 'text-white/70 hover:text-white'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
 
-export default Navbar; 
+export default Navbar;
+
+
