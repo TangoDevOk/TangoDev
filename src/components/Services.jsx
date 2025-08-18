@@ -25,8 +25,13 @@ const Services = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <section id="services" className="min-h-screen bg-[#141414] relative overflow-hidden flex items-center">
       <div className="relative z-10 max-w-[90rem] mx-auto px-6 w-full">
+=======
+    <section id="services" className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+>>>>>>> 2eb6c758c2f87baeac6d57b3fec5509780c8e4bb
         {/* Layout como la referencia: texto a la izquierda, CardSwap a la derecha */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           {/* Texto a la izquierda - Estilo Hero */}

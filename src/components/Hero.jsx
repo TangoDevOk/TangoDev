@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+<<<<<<< HEAD
 import { ArrowRight, Globe, Clock, Zap, Server, HeadphonesIcon } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -89,6 +90,13 @@ const Hero = () => {
     }
   };
 
+=======
+import { ArrowRight, Sparkles, ArrowDown } from 'lucide-react';
+import LightRays from './LightRays';
+import TextType from './TextType';
+
+const Hero = () => {
+>>>>>>> 2eb6c758c2f87baeac6d57b3fec5509780c8e4bb
   return (
     <section className="relative min-h-[92vh] bg-[#141414]">
       <div className="max-w-[90rem] mx-auto px-6 pt-28 pb-16 grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
@@ -110,6 +118,7 @@ const Hero = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Columna derecha: Cubo 3D */}
         <div className="lg:col-span-1 justify-self-center lg:justify-self-end">
           <motion.div 
@@ -117,6 +126,66 @@ const Hero = () => {
             initial={{ opacity: 0, rotateY: -15 }}
             animate={{ opacity: 1, rotateY: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
+=======
+      {/* Main Content Container - Centered like React Bits */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
+        {/* New Background Button */}
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center space-x-3 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 mb-8 hover:bg-neutral-900/20 transition-colors duration-300"
+        >
+          <Sparkles className="w-5 h-5 text-slate-300" />
+          <span className="text-base text-slate-300 font-medium">Desarrollo Web</span>
+        </motion.button>
+
+        {/* Main Headline - EFECTO DE ESCRITURA */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="text-3xl md:text-5xl lg:text-7xl font-bold text-center mb-10 max-w-5xl"
+        >
+          <TextType 
+            text={[
+              "Iluminamos tu camino en el mundo digital",
+              "Iluminamos tu camino en el mundo real",
+              "Iluminamos tu camino en el mundo web"
+            ]}
+            typingSpeed={100}
+            pauseDuration={3000}
+            deletingSpeed={50}
+            showCursor={true}
+            cursorCharacter="|"
+            cursorClassName="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent"
+            className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+          />
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-xl md:text-2xl text-slate-300 text-center mb-10 max-w-5xl leading-relaxed"
+        >
+          Servicios web rápidos, seguros y a tu medida para que tu idea crezca online.
+        </motion.p>
+
+        {/* CTA Buttons - EXACTLY as in React Bits */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8"
+        >
+          {/* Primary CTA */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center space-x-3 bg-white text-black px-10 py-5 rounded-full font-semibold hover:bg-slate-100 transition-colors duration-300 shadow-lg hover:shadow-xl text-lg"
+>>>>>>> 2eb6c758c2f87baeac6d57b3fec5509780c8e4bb
           >
             {Cube3D}
           </motion.div>

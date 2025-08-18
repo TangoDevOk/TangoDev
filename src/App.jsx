@@ -3,13 +3,15 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import Projects from './components/Projects';
+import ProcessTimeline from './components/ProcessTimeline';
+import ProjectMosaic from './components/ProjectMosaic';
 import Pricing from './components/Pricing';
-import Testimonials from './components/Testimonials';
+import Team from './components/Team';
 import Results from './components/Results';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
+import ParticleBackground from './components/ParticleBackground';
 
 function App() {
   return (
@@ -22,13 +24,22 @@ function App() {
         <main className="relative">
           <Hero />
           <Services />
-          <Projects />
+          <ProcessTimeline />
+          <ProjectMosaic />
           <Pricing />
-          <Testimonials />
+          <Team />
           <Results />
+          {/*        <CapabilitiesSlider />
+                <About />
+                <Contact /> */}
         </main>
         <Footer />
         <ScrollToTop />
+        
+        {/* Particle Background - Cubre toda la página excepto el Hero */}
+        <div className="absolute inset-0 pointer-events-none z-0" style={{ top: '100vh' }}>
+          <ParticleBackground />
+        </div>
       </div>
     </Router>
   );
