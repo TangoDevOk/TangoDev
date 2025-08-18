@@ -13,6 +13,12 @@ import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
 import ParticleBackground from './components/ParticleBackground';
 
+// Import pages
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import PricingPage from './pages/Pricing';
+
 function App() {
   return (
     <Router>
@@ -21,18 +27,28 @@ function App() {
         <ScrollProgress />
         
         <Navbar />
-        <main className="relative">
-          <Hero />
-          <Services />
-          <ProcessTimeline />
-          <ProjectMosaic />
-          <Pricing />
-          <Team />
-          <Results />
-          {/*        <CapabilitiesSlider />
-                <About />
-                <Contact /> */}
-        </main>
+        
+        <Routes>
+          {/* Home Page */}
+          <Route path="/" element={
+            <main className="relative">
+              <Hero />
+              <Services />
+              <ProcessTimeline />
+              <ProjectMosaic />
+              <Pricing />
+              <Team />
+              <Results />
+            </main>
+          } />
+          
+          {/* Internal Pages */}
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pricing" element={<PricingPage />} />
+        </Routes>
+        
         <Footer />
         <ScrollToTop />
         

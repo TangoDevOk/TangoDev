@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
 
   const navItems = [
-    { name: 'Inicio', href: '#home' },
-    { name: 'Servicios', href: '#services' },
-    { name: 'Proyectos', href: '#services' },
-    { name: 'Precios', href: '#services' },
-    { name: 'Contacto', href: '#services' },
+    { name: 'Inicio', href: '/', isHome: true },
+    { name: 'Proyectos', href: '/projects' },
+    { name: 'Sobre Nosotros', href: '/about' },
+    { name: 'Precios', href: '/pricing' },
+    { name: 'Contacto', href: '/contact' },
   ];
 
   useEffect(() => {
@@ -53,16 +55,18 @@ const Navbar = () => {
         }}
         className="fixed top-8 left-8 z-50"
       >
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="flex items-center"
-        >
-          <img 
-            src="/images/tangodev1blanco.png" 
-            alt="TangoDev Logo" 
-            className="h-8 w-auto object-contain"
-          />
-        </motion.div>
+        <Link to="/">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center"
+          >
+            <img 
+              src="/images/tangodev1blanco.png" 
+              alt="TangoDev Logo" 
+              className="h-8 w-auto object-contain"
+            />
+          </motion.div>
+        </Link>
       </motion.div>
 
       {/* Navbar centrada */}
@@ -86,21 +90,24 @@ const Navbar = () => {
           {/* Navigation Links - Centrados */}
           <div className="flex items-center space-x-12">
             {navItems.map((item, index) => (
-              <motion.a
+              <motion.div
                 key={item.name}
-                href={item.href}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -1 }}
-                className={`text-base font-medium transition-all duration-300 px-6 py-3 rounded-full ${
-                  item.name === 'Inicio' 
-                    ? 'bg-white text-slate-900 shadow-sm' 
-                    : 'text-white hover:text-slate-200'
-                }`}
               >
-                {item.name}
-              </motion.a>
+                <Link
+                  to={item.href}
+                  className={`text-base font-medium transition-all duration-300 px-6 py-3 rounded-full ${
+                    location.pathname === item.href
+                      ? 'bg-white text-slate-900 shadow-sm' 
+                      : 'text-white hover:text-slate-200'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
