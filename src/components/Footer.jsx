@@ -21,7 +21,7 @@ const Footer = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.7, scale: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
-          className="text-[20rem] md:text-[25rem] lg:text-[30rem] font-black text-white leading-none tracking-tighter select-none mb-[-6rem]"
+          className="hero-title text-[20rem] md:text-[25rem] lg:text-[30rem] text-white leading-none tracking-tighter select-none mb-[-6rem]"
         >
           tangodev
         </motion.span>

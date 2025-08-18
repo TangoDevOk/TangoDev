@@ -25,11 +25,11 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-32 bg-black relative overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="min-h-screen bg-[#141414] relative overflow-hidden flex items-center">
+      <div className="relative z-10 max-w-[90rem] mx-auto px-6 w-full">
         {/* Layout como la referencia: texto a la izquierda, CardSwap a la derecha */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center min-h-[600px]">
-          {/* Texto a la izquierda - Estilo React Bits */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          {/* Texto a la izquierda - Estilo Hero */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -38,7 +38,7 @@ const Services = () => {
             className="text-left"
           >
             <motion.h2 
-              className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+              className="hero-title text-2xl md:text-4xl lg:text-5xl tracking-wide leading-[1.2] text-[#E2E2E2] mb-6 font-gilroy"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -52,7 +52,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-slate-400 leading-relaxed"
+              className="text-lg md:text-xl lg:text-2xl text-[#E2E2E2]/70 leading-relaxed font-gilroy font-medium"
             >
               Desde el diseño y desarrollo web hasta la optimización y escalabilidad, tenemos todo lo que tu plataforma necesita para crecer.
             </motion.p>
@@ -77,20 +77,20 @@ const Services = () => {
               {services.map((service, index) => (
                 <Card
                   key={service.title}
-                  className="bg-neutral-900/90 backdrop-blur-xl border border-white/20 p-8"
+                  className="bg-[#141414]/90 backdrop-blur-xl border border-[#E2E2E2]/20 p-8"
                 >
                   <div className="h-full flex flex-col">
                     {/* Header de la card como en la referencia */}
                     <div className="flex items-center space-x-3 mb-6">
-                      <div className="w-4 h-4 bg-white rounded-full"></div>
-                      <span className="text-white font-medium text-lg">{service.title}</span>
+                      <div className="w-4 h-4 bg-[#E2E2E2] rounded-full"></div>
+                      <span className="text-[#E2E2E2] font-medium text-lg font-gilroy">{service.title}</span>
                     </div>
                     
                     {/* Número estilizado como en la referencia */}
                     <div className="flex-1 flex items-center justify-center">
                       <div className="relative">
                         {/* Número principal con estilos geométricos */}
-                        <div className="text-8xl font-black text-white" style={{ fontFamily: 'Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+                        <div className="text-8xl font-black text-[#E2E2E2] font-gilroy">
                           {service.number}
                         </div>
                         
@@ -100,8 +100,8 @@ const Services = () => {
                             {/* Barra superior con colores */}
                             <div className="absolute -top-4 left-0 w-16 h-4 bg-gradient-to-r from-orange-400 via-yellow-400 to-green-400 rounded-sm"></div>
                             {/* Líneas diagonales azules */}
-                            <div className="absolute top-2 left-0 w-2 h-16 bg-blue-400 transform rotate-12"></div>
-                            <div className="absolute top-4 left-2 w-2 h-12 bg-blue-400 transform rotate-12"></div>
+                            <div className="absolute top-2 left-0 w-2 h-16 bg-[#455CFF] transform rotate-12"></div>
+                            <div className="absolute top-4 left-2 w-2 h-12 bg-[#455CFF] transform rotate-12"></div>
                             {/* Elemento púrpura */}
                             <div className="absolute bottom-2 left-0 w-4 h-4 bg-purple-400 rounded-sm"></div>
                           </>
