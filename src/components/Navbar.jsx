@@ -1,205 +1,72 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Menu, ArrowRight, Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible] = useState(true);
   const location = useLocation();
 
-  const navItems = [
-    { name: 'Inicio', href: '/', isHome: true },
-    { name: 'Proyectos', href: '/projects' },
-    { name: 'Sobre Nosotros', href: '/about' },
-    { name: 'Precios', href: '/pricing' },
-    { name: 'Contacto', href: '/contact' },
+  const centerNav = [
+    { name: 'Inicio', href: '/', id: 'inicio' },
+    { name: 'Proyectos', href: '/projects', id: 'projects' },
+    { name: 'Sobre Nosotros', href: '/about', id: 'about' },
+    { name: 'Precios', href: '/pricing', id: 'pricing' },
+    { name: 'Contacto', href: '/contact', id: 'contact' },
   ];
 
-  // Handle scroll visibility
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 100);
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
   return (
-    <>
-      {/* Logo separado a la izquierda */}
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ 
-          y: 0, 
-          opacity: isVisible ? 1 : 0,
-          scale: isVisible ? 1 : 0.95
-        }}
-        transition={{ 
-          duration: 0.3, 
-          ease: "easeOut",
-          opacity: { duration: 0.4 },
-          scale: { duration: 0.4 }
-        }}
-        className="fixed top-8 left-8 z-50"
-      >
-        <Link to="/">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center"
-          >
-            <img 
-              src="/images/tangodev1blanco.png" 
-              alt="TangoDev Logo" 
-              className="h-8 w-auto object-contain"
-            />
-          </motion.div>
-        </Link>
-      </motion.div>
-
-      {/* Navbar centrada */}
-      <motion.nav 
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ 
-          y: 0, 
-          opacity: isVisible ? 1 : 0,
-          scale: isVisible ? 1 : 0.95
-        }}
-        transition={{ 
-          duration: 0.3, 
-          ease: "easeOut",
-          opacity: { duration: 0.4 },
-          scale: { duration: 0.4 }
-        }}
-        className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
-      >
-        {/* Navbar Container - Solo navegación centrada */}
-        <div className="bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full px-12 py-2 flex items-center justify-center min-w-[800px] shadow-lg">
-          {/* Navigation Links - Centrados */}
-          <div className="flex items-center space-x-12">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -1 }}
-              >
-                <Link
-                  to={item.href}
-                  className={`text-base font-medium transition-all duration-300 px-6 py-3 rounded-full ${
-                    location.pathname === item.href
-                      ? 'bg-white text-slate-900 shadow-sm' 
-                      : 'text-white hover:text-slate-200'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+    <motion.nav
+      initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      className="fixed top-0 left-0 right-0 z-50"
+    >
+      <div className="max-w-[90rem] mx-auto px-6 py-6 flex items-center justify-between">
+        {/* Left: logo + email */}
+        <div className="flex items-center gap-4 text-sm text-slate-300">
+          <Link to="/">
+            <img src="/images/tangodev1blanco.png" alt="TangoDev" className="h-6 w-auto opacity-90" />
+          </Link>
         </div>
-      </motion.nav>
 
-      {/* Mobile Menu Button */}
-      <motion.button
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ 
-          y: 0, 
-          opacity: isVisible ? 1 : 0,
-          scale: isVisible ? 1 : 0.95
-        }}
-        transition={{ 
-          duration: 0.3, 
-          ease: "easeOut",
-          opacity: { duration: 0.4 },
-          scale: { duration: 0.4 }
-        }}
-        className="fixed top-8 right-8 z-50 md:hidden"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className="w-10 h-10 bg-neutral-900/10 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            {isOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X className="w-5 h-5 text-white" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu className="w-5 h-5 text-white" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </motion.button>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            <div 
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="absolute right-0 top-0 h-full w-80 bg-neutral-900/95 backdrop-blur-md border-l border-white/20 p-8"
+        {/* Center: navigation */}
+        <div className="hidden md:flex items-center gap-6 text-sm">
+          {centerNav.map((item) => (
+            <Link 
+              key={item.name} 
+              to={item.href} 
+              className={`transition-colors font-gilroy ${
+                location.pathname === item.href
+                  ? 'text-white font-medium' 
+                  : 'text-slate-300 hover:text-white font-normal'
+              }`}
             >
-              <div className="flex flex-col space-y-6 mt-20">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                  >
-                    <Link
-                      to={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-xl font-medium transition-all duration-300 block py-3 ${
-                        location.pathname === item.href
-                          ? 'text-white' 
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Right: FAQ + CTA + Menu */}
+        <div className="flex items-center gap-4">
+          <Link to="/contact" className="text-sm text-slate-300 hover:text-white transition-colors font-gilroy font-normal">Contacto</Link>
+          <Link
+            to="/pricing"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full text-white text-sm font-semibold px-6 py-3 shadow transition-colors font-gilroy"
+            style={{ backgroundColor: '#455CFF' }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#3B4FD9'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#455CFF'}
+          >
+            Comenzar
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <button className="inline-flex items-center justify-center rounded-full p-2 text-white hover:bg-white/10 transition-colors font-gilroy">
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </motion.nav>
   );
 };
 
 export default Navbar;
-
-

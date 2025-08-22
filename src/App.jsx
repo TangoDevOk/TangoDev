@@ -5,13 +5,13 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import ProcessTimeline from './components/ProcessTimeline';
 import ProjectMosaic from './components/ProjectMosaic';
+import ServiceCards from './components/ServiceCards';
 import Pricing from './components/Pricing';
 import Team from './components/Team';
 import Results from './components/Results';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
-import ParticleBackground from './components/ParticleBackground';
 
 // Import pages
 import Projects from './pages/Projects';
@@ -36,6 +36,7 @@ function App() {
               <Services />
               <ProcessTimeline />
               <ProjectMosaic />
+              <ServiceCards />
               <Pricing />
               <Team />
               <Results />
@@ -51,11 +52,6 @@ function App() {
         
         <Footer />
         <ScrollToTop />
-        
-        {/* Particle Background - Cubre toda la página excepto el Hero */}
-        <div className="absolute inset-0 pointer-events-none z-0" style={{ top: '100vh' }}>
-          <ParticleBackground />
-        </div>
       </div>
     </Router>
   );

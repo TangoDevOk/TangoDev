@@ -57,9 +57,9 @@ const ProcessTimeline = () => {
           </motion.p>
 
           {/* Timeline visual fiel a la imagen */}
-          <div className="relative w-full max-w-5xl mx-auto pt-2">
+          <div className="relative w-full max-w-6xl mx-auto pt-2">
             {/* Línea horizontal detrás de los puntos */}
-            <div className="absolute left-30 right-30 top-[72px] md:top-[92px] h-0.5 bg-gray-500 opacity-70 z-0"></div>
+            <div className="absolute left-20 right-20 top-[72px] md:top-[92px] h-0.5 bg-gray-500 opacity-70 z-0"></div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-0 relative z-10">
               {processSteps.map((step, i) => (
                 <div key={step.number} className="flex flex-col items-center text-center px-2">

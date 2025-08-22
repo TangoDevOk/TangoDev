@@ -73,12 +73,12 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <h1 className="hero-title text-5xl md:text-7xl tracking-wide leading-[1.2] text-white mb-6">
             Nuestros
             <br />
             <span className="text-white/60">Proyectos</span>
           </h1>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto font-gilroy">
             Descubre nuestra cartera de proyectos innovadores que transforman ideas en experiencias digitales extraordinarias.
           </p>
         </motion.div>
@@ -115,11 +115,11 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/80 transition-colors duration-200">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/80 transition-colors duration-200 font-gilroy">
                     {project.title}
                   </h3>
                   
-                  <p className="text-white/70 mb-6 leading-relaxed">
+                  <p className="text-white/70 mb-6 leading-relaxed font-gilroy">
                     {project.description}
                   </p>
 
@@ -170,10 +170,10 @@ const Projects = () => {
           className="text-center mt-20"
         >
           <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4 font-gilroy">
               ¿Tienes un proyecto en mente?
             </h2>
-            <p className="text-white/60 mb-8 max-w-2xl mx-auto">
+            <p className="text-white/60 mb-8 max-w-2xl mx-auto font-gilroy">
               Estamos listos para transformar tu idea en una realidad digital. Contáctanos para discutir tu proyecto.
             </p>
             <Link 

@@ -1,14 +1,11 @@
 import { motion } from 'framer-motion';
-import { Check, ToggleLeft } from 'lucide-react';
-import { useState } from 'react';
+import { Check } from 'lucide-react';
 
 const Pricing = () => {
-  const [isYearly, setIsYearly] = useState(false);
-
   const plans = [
     {
       name: "Plan Básico",
-      price: isYearly ? "$450.000/año" : "$500.000/mes",
+      price: "$500.000/mes",
       features: [
         "Diseño personalizado y responsive",
         "Hasta 6 páginas web",
@@ -24,7 +21,7 @@ const Pricing = () => {
     },
     {
       name: "Plan E-Commerce",
-      price: isYearly ? "$830.000/año" : "$924.000/mes",
+      price: "$924.000/mes",
       features: [
         "Todo lo del plan Básico",
         "Hasta 20 productos cargados",
@@ -40,7 +37,7 @@ const Pricing = () => {
     },
     {
       name: "Plan SaaS",
-      price: isYearly ? "$3.120.000/año" : "$3.465.000/mes",
+      price: "$3.465.000/mes",
       features: [
         "Desarrollo web a medida completo",
         "Backend personalizado y escalable",
@@ -76,7 +73,7 @@ const Pricing = () => {
           {/* Pricing Cards - Sin header, solo las cards */}
           <div className="pt-48">
             {/* Pricing Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-8">
               {plans.map((plan, index) => (
                 <motion.div
                   key={plan.name}
@@ -139,36 +136,6 @@ const Pricing = () => {
               ))}
             </div>
           </div>
-
-          {/* Toggle de Facturación */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex items-center justify-center space-x-4"
-          >
-            <span className="text-slate-300">Facturación Mensual</span>
-            <button
-              onClick={() => setIsYearly(!isYearly)}
-              className={`relative w-16 h-8 rounded-full transition-colors duration-300 ${
-                isYearly ? 'bg-white' : 'bg-gray-700'
-              }`}
-            >
-              <motion.div
-                animate={{
-                  x: isYearly ? 32 : 4
-                }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-1 w-6 h-6 bg-gray-800 rounded-full shadow-md"
-              />
-            </button>
-            <span className="text-white font-medium">Facturación Anual</span>
-            {isYearly && (
-              <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium border border-green-500/30">
-                Ahorra 10%
-              </span>
-            )}
-          </motion.div>
         </div>
       </div>
     </section>

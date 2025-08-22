@@ -1,93 +1,170 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Check, Star } from 'lucide-react';
+import { ArrowLeft, Check, Clock, Zap, Server, HeadphonesIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import FeatureCards from '../components/FeatureCards';
 
 const Pricing = () => {
-  const plans = [
-    {
-      name: "Básico",
-      price: "$2,500",
-      duration: "por proyecto",
-      description: "Perfecto para proyectos pequeños y sitios web básicos",
-      features: [
-        "Diseño responsivo",
-        "Hasta 5 páginas",
-        "Formulario de contacto",
-        "SEO básico",
-        "Hosting incluido (1 año)",
-        "Soporte por email"
-      ],
-      popular: false,
-      cta: "Comenzar proyecto"
-    },
-    {
-      name: "Profesional",
-      price: "$5,000",
-      duration: "por proyecto",
-      description: "Ideal para empresas y aplicaciones web complejas",
-      features: [
-        "Todo del plan Básico",
-        "Hasta 15 páginas",
-        "Panel de administración",
-        "Integración con APIs",
-        "Base de datos",
-        "Soporte prioritario",
-        "Mantenimiento (3 meses)"
-      ],
-      popular: true,
-      cta: "Comenzar proyecto"
-    },
-    {
-      name: "Enterprise",
-      price: "$12,000",
-      duration: "por proyecto",
-      description: "Para aplicaciones complejas y sistemas empresariales",
-      features: [
-        "Todo del plan Profesional",
-        "Páginas ilimitadas",
-        "Funcionalidades personalizadas",
-        "Integración con sistemas externos",
-        "Escalabilidad garantizada",
-        "Soporte 24/7",
-        "Mantenimiento (1 año)",
-        "Capacitación del equipo"
-      ],
-      popular: false,
-      cta: "Contactar ventas"
-    }
-  ];
+  const [selectedPlan, setSelectedPlan] = useState('basic');
 
-  const services = [
+  // Planes principales con sub-planes
+  const mainPlans = [
     {
-      title: "Desarrollo Web",
-      description: "Sitios web modernos y responsivos",
-      price: "Desde $2,500",
-      features: ["Diseño personalizado", "Optimización SEO", "Integración CMS"]
+      id: 'basic',
+      name: 'Plan Básico',
+      description: 'Perfecto para proyectos pequeños y sitios web básicos',
+      icon: '🌱',
+      subPlans: [
+        {
+          name: 'Starter',
+          price: '$500.000/mes',
+          features: [
+            'Diseño personalizado y responsive',
+            'Hasta 3 páginas web',
+            'Optimización SEO básica',
+            'Formulario de contacto',
+            'Integración con redes sociales',
+            'Hosting y dominio opcional',
+            'Soporte por email'
+          ],
+          popular: false
+        },
+        {
+          name: 'Standard',
+          price: '$720.000/mes',
+          features: [
+            'Todo del plan Starter',
+            'Hasta 6 páginas web',
+            'Optimización SEO avanzada',
+            'Blog integrado',
+            'Analytics y reportes',
+            'Hosting y dominio incluidos',
+            'Soporte prioritario'
+          ],
+          popular: true
+        },
+        {
+          name: 'Premium',
+          price: '$945.000/mes',
+          features: [
+            'Todo del plan Standard',
+            'Hasta 10 páginas web',
+            'SEO completo y posicionamiento',
+            'Sistema de reservas/citas',
+            'Integración con CRM',
+            'Hosting premium incluido',
+            'Soporte 24/7'
+          ],
+          popular: false
+        }
+      ]
     },
     {
-      title: "Aplicaciones Web",
-      description: "Aplicaciones web complejas y escalables",
-      price: "Desde $8,000",
-      features: ["Backend robusto", "Base de datos", "APIs personalizadas"]
+      id: 'ecommerce',
+      name: 'Plan E-Commerce',
+      description: 'Tiendas online completas con pasarelas de pago',
+      icon: '🛒',
+      subPlans: [
+        {
+          name: 'Shop',
+          price: '$924.000/mes',
+          features: [
+            'Todo lo del plan Básico Premium',
+            'Hasta 20 productos cargados',
+            'Carrito de compras funcional',
+            'Pasarela de pagos integrada',
+            'Configuración de envíos',
+            'Panel de administración',
+            'Capacitación para manejar la tienda'
+          ],
+          popular: false
+        },
+        {
+          name: 'Store',
+          price: '$1.335.000/mes',
+          features: [
+            'Todo del plan Shop',
+            'Hasta 100 productos',
+            'Múltiples pasarelas de pago',
+            'Sistema de cupones y descuentos',
+            'Gestión de inventario avanzada',
+            'Reportes de ventas',
+            'Soporte técnico especializado'
+          ],
+          popular: true
+        },
+        {
+          name: 'Marketplace',
+          price: '$2.000.000/mes',
+          features: [
+            'Todo del plan Store',
+            'Productos ilimitados',
+            'Múltiples vendedores',
+            'Sistema de comisiones',
+            'Panel de vendedores',
+            'Integración con marketplaces',
+            'Soporte premium 24/7'
+          ],
+          popular: false
+        }
+      ]
     },
     {
-      title: "E-commerce",
-      description: "Tiendas online completas",
-      price: "Desde $6,000",
-      features: ["Pasarela de pagos", "Gestión de inventario", "Panel administrativo"]
-    },
-    {
-      title: "Aplicaciones Móviles",
-      description: "Apps nativas e híbridas",
-      price: "Desde $10,000",
-      features: ["iOS y Android", "Funcionalidades offline", "Notificaciones push"]
+      id: 'saas',
+      name: 'Plan SaaS',
+      description: 'Aplicaciones web complejas y sistemas empresariales',
+      icon: '🚀',
+      subPlans: [
+        {
+          name: 'Startup',
+          price: '$3.465.000/mes',
+          features: [
+            'Desarrollo web a medida completo',
+            'Backend personalizado y escalable',
+            'Panel de administración avanzado',
+            'Integraciones con APIs externas',
+            'Sistema de usuarios y autenticación',
+            'Pagos recurrentes y suscripciones',
+            'Mantenimiento post-lanzamiento'
+          ],
+          popular: false
+        },
+        {
+          name: 'Scale',
+          price: '$5.000.000/mes',
+          features: [
+            'Todo del plan Startup',
+            'Arquitectura microservicios',
+            'Base de datos distribuida',
+            'Sistema de notificaciones',
+            'Analytics avanzados',
+            'API pública documentada',
+            'Soporte técnico dedicado'
+          ],
+          popular: true
+        },
+        {
+          name: 'Enterprise',
+          price: '$8.000.000/mes',
+          features: [
+            'Todo del plan Scale',
+            'Infraestructura cloud nativa',
+            'Sistema de roles y permisos',
+            'Integración con sistemas legacy',
+            'Escalabilidad automática',
+            'SLA garantizado',
+            'Equipo de soporte dedicado'
+          ],
+          popular: false
+        }
+      ]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
+    <div className="bg-[#141414] relative overflow-hidden">
       {/* Header */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-28 pb-16">
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,7 +174,7 @@ const Pricing = () => {
         >
           <Link 
             to="/"
-            className="inline-flex items-center space-x-2 text-white/60 hover:text-white transition-colors duration-200"
+            className="inline-flex items-center space-x-2 text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Volver al inicio</span>
@@ -111,170 +188,150 @@ const Pricing = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Planes y
-            <br />
-            <span className="text-white/60">Precios</span>
+          <h1 className="hero-title text-3xl md:text-5xl lg:text-6xl tracking-wide leading-[1.2] text-[#E2E2E2] mb-6">
+            Planes y Precios
           </h1>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-[#E2E2E2]/70 max-w-3xl mx-auto font-gilroy">
             Soluciones flexibles adaptadas a tus necesidades. Elige el plan que mejor se ajuste a tu proyecto.
           </p>
         </motion.div>
 
-        {/* Pricing Plans */}
+        {/* Plan Selection */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-20"
+          className="mb-12"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className={`relative bg-black/50 backdrop-blur-md border rounded-2xl p-8 ${
-                  plan.popular 
-                    ? 'border-white/40 bg-white/5' 
-                    : 'border-white/20'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="inline-flex items-center space-x-1 px-4 py-2 bg-white text-black text-sm font-semibold rounded-full">
-                      <Star className="w-4 h-4" />
-                      <span>Más Popular</span>
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-white">{plan.price}</span>
-                    <span className="text-white/60 ml-2">{plan.duration}</span>
-                  </div>
-                  <p className="text-white/60">{plan.description}</p>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-3">
-                      <Check className="w-5 h-5 text-white flex-shrink-0" />
-                      <span className="text-white/70">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  to={plan.name === "Enterprise" ? "/contact" : "/contact"}
-                  className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-colors duration-200 ${
-                    plan.popular
-                      ? 'bg-white text-black hover:bg-white/90'
-                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
+          <div className="w-full">
+            <div className="flex bg-[#E2E2E2]/10 rounded-lg p-1 backdrop-blur-md">
+              {mainPlans.map((plan) => (
+                <button
+                  key={plan.id}
+                  onClick={() => setSelectedPlan(plan.id)}
+                  className={`relative flex-1 px-8 py-3 rounded-md font-medium transition-all duration-300 ${
+                    selectedPlan === plan.id
+                      ? 'text-[#455CFF] bg-[#E2E2E2]/20'
+                      : 'text-[#E2E2E2] hover:text-[#E2E2E2]/80'
                   }`}
                 >
-                  {plan.cta}
-                </Link>
-              </motion.div>
-            ))}
+                  {plan.name}
+                  {/* Indicador azul debajo del tab seleccionado */}
+                  {selectedPlan === plan.id && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#455CFF] rounded-full"></div>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* Services Section */}
+        {/* Selected Plan Details */}
         <motion.div
+          key={selectedPlan}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-20"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-16"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Servicios Especializados</h2>
-            <p className="text-white/60">Soluciones personalizadas para necesidades específicas</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="bg-black/50 backdrop-blur-md border border-white/20 rounded-xl p-6"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-                    <p className="text-white/60 text-sm">{service.description}</p>
-                  </div>
-                  <span className="text-2xl font-bold text-white">{service.price}</span>
+          {mainPlans.map((plan) => (
+            plan.id === selectedPlan && (
+              <div key={plan.id}>
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#E2E2E2] mb-4 font-gilroy">{plan.name}</h2>
+                  <p className="text-[#E2E2E2]/70 max-w-2xl mx-auto font-gilroy">{plan.description}</p>
                 </div>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-2 text-white/70 text-sm">
-                      <Check className="w-4 h-4 text-white/50 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
+
+                {/* Sub Plans */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {plan.subPlans.map((subPlan, index) => (
+                    <motion.div
+                      key={subPlan.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                      className="relative group transition-transform duration-300"
+                    >
+                      {/* Badge Más Popular */}
+                      {subPlan.popular && (
+                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                          <span className="bg-white text-[#141414] px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            Más Popular
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Glassmorphism Card */}
+                      <div className="relative bg-gray-900/20 backdrop-blur-md border border-white/20 rounded-2xl p-8 h-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-900/30">
+                        {/* Card Content */}
+                        <div className="text-left mb-8">
+                          <h3 className="text-xl font-semibold text-white mb-4 font-gilroy">
+                            {subPlan.name}
+                          </h3>
+                          <div className="mb-6">
+                            <span className="text-4xl font-bold text-white font-gilroy">
+                              {subPlan.price}
+                            </span>
+                          </div>
+                          {/* Línea separadora */}
+                          <div className="w-full h-px bg-white/20 mb-6"></div>
+                        </div>
+
+                        {/* Features List */}
+                        <ul className="space-y-4 mb-8">
+                          {subPlan.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-start space-x-3">
+                              <div className="flex-shrink-0 w-5 h-5 bg-gray-950 rounded-full flex items-center justify-center mt-0.5">
+                                <Check className="w-3 h-3 text-white" />
+                              </div>
+                              <span className="text-slate-300 text-sm leading-relaxed font-gilroy">
+                                {feature}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* CTA Button */}
+                        <button
+                          className={`w-full py-4 px-6 rounded-full font-semibold transition-all duration-300 ${
+                            subPlan.popular
+                              ? 'bg-white text-[#141414] hover:bg-gray-100 shadow-lg hover:shadow-xl'
+                              : 'bg-black text-white hover:bg-neutral-900 border border-neutral-800 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]'
+                          } transform hover:scale-105`}
+                        >
+                          Comenzar
+                        </button>
+                      </div>
+                    </motion.div>
                   ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+                </div>
+              </div>
+            )
+          ))}
         </motion.div>
 
-        {/* FAQ Section */}
+        {/* Feature Cards - Ahora después de los planes */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="mb-20"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Preguntas sobre precios</h2>
-            <p className="text-white/60">Resolvemos las dudas más comunes sobre nuestros planes</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                question: "¿Los precios incluyen hosting y dominio?",
-                answer: "Sí, todos nuestros planes incluyen hosting y dominio por el primer año. Después puedes continuar con nosotros o migrar a otro proveedor."
-              },
-              {
-                question: "¿Ofrecen descuentos para proyectos grandes?",
-                answer: "Absolutamente. Para proyectos enterprise y contratos a largo plazo ofrecemos descuentos especiales. Contáctanos para discutir."
-              },
-              {
-                question: "¿Pueden personalizar un plan según mis necesidades?",
-                answer: "Sí, creamos planes personalizados adaptados a tus requisitos específicos. Cada proyecto es único y merece una solución a medida."
-              },
-              {
-                question: "¿Qué incluye el mantenimiento?",
-                answer: "El mantenimiento incluye actualizaciones de seguridad, backups, monitoreo del sitio y soporte técnico para problemas menores."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-black/50 backdrop-blur-md border border-white/20 rounded-xl p-6">
-                <h3 className="text-white font-semibold mb-3">{faq.question}</h3>
-                <p className="text-white/60 text-sm">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <FeatureCards />
         </motion.div>
 
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center"
         >
           <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4 font-gilroy">
               ¿No encuentras lo que buscas?
             </h2>
-            <p className="text-white/60 mb-8 max-w-2xl mx-auto">
+            <p className="text-white/60 mb-8 max-w-2xl mx-auto font-gilroy">
               Cada proyecto es único. Contáctanos para discutir tus necesidades específicas 
               y crear una propuesta personalizada que se ajuste perfectamente a tu presupuesto.
             </p>

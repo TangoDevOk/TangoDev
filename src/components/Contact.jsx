@@ -171,105 +171,90 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Nombre Completo *
-                  </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm ${
-                      errors.name ? 'border-red-500' : 'border-gray-600'
+                    className={`w-full px-0 py-3 bg-transparent border-b border-white/30 text-white placeholder-white/40 focus:outline-none focus:border-white/60 transition-colors duration-200 font-gilroy ${
+                      errors.name ? 'border-red-500' : ''
                     }`}
-                    placeholder="Tu nombre"
+                    placeholder="Nombre completo"
                     disabled={isSubmitting}
                   />
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                    <p className="mt-1 text-sm text-red-400 font-gilroy">{errors.name}</p>
                   )}
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email *
-                  </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm ${
-                      errors.email ? 'border-red-500' : 'border-gray-600'
+                    className={`w-full px-0 py-3 bg-transparent border-b border-white/30 text-white placeholder-white/40 focus:outline-none focus:border-white/60 transition-colors duration-200 font-gilroy ${
+                      errors.email ? 'border-red-500' : ''
                     }`}
-                    placeholder="tu@email.com"
+                    placeholder="Email"
                     disabled={isSubmitting}
                   />
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                    <p className="mt-1 text-sm text-red-400 font-gilroy">{errors.email}</p>
                   )}
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
-                    Teléfono
-                  </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm ${
-                      errors.phone ? 'border-red-500' : 'border-gray-600'
+                    className={`w-full px-0 py-3 bg-transparent border-b border-white/30 text-white placeholder-white/40 focus:outline-none focus:border-white/60 transition-colors duration-200 font-gilroy ${
+                      errors.phone ? 'border-red-500' : ''
                     }`}
-                    placeholder="+54 11 1234-5678"
+                    placeholder="Teléfono (opcional)"
                     disabled={isSubmitting}
                   />
                   {errors.phone && (
-                    <p className="mt-1 text-sm text-red-400">{errors.phone}</p>
+                    <p className="mt-1 text-sm text-red-400 font-gilroy">{errors.phone}</p>
                   )}
                 </div>
                 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">
-                    Presupuesto Estimado
-                  </label>
                   <input
                     type="text"
                     id="budget"
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm ${
-                      errors.budget ? 'border-red-500' : 'border-gray-600'
+                    className={`w-full px-0 py-3 bg-transparent border-b border-white/30 text-white placeholder-white/40 focus:outline-none focus:border-white/60 transition-colors duration-200 font-gilroy ${
+                      errors.budget ? 'border-red-500' : ''
                     }`}
-                    placeholder="Ej: $500.000 - $1.000.000"
+                    placeholder="Presupuesto estimado (opcional)"
                     disabled={isSubmitting}
                   />
                   {errors.budget && (
-                    <p className="mt-1 text-sm text-red-400">{errors.budget}</p>
+                    <p className="mt-1 text-sm text-red-400 font-gilroy">{errors.budget}</p>
                   )}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
-                  Servicio de Interés
-                </label>
                 <select
                   id="service"
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white backdrop-blur-sm disabled:opacity-50"
+                  className="w-full px-0 py-3 bg-transparent border-b border-white/30 text-white focus:outline-none focus:border-white/60 transition-colors duration-200 font-gilroy disabled:opacity-50"
                   disabled={isSubmitting}
                 >
-                  <option value="">Selecciona un servicio</option>
+                  <option value="">Servicio de interés (opcional)</option>
                   <option value="web-design">Diseño Web</option>
                   <option value="web-development">Desarrollo Web</option>
                   <option value="ecommerce">E-Commerce</option>
@@ -283,19 +268,16 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Mensaje *
-                </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400 backdrop-blur-sm resize-none disabled:opacity-50 ${
-                    errors.message ? 'border-red-500' : 'border-gray-600'
+                  className={`w-full px-0 py-3 bg-transparent border-b border-white/30 text-white placeholder-white/40 focus:outline-none focus:border-white/60 transition-colors duration-200 resize-none font-gilroy disabled:opacity-50 ${
+                    errors.message ? 'border-red-500' : ''
                   }`}
-                  placeholder="Cuéntanos sobre tu proyecto, objetivos, presupuesto y cualquier detalle que consideres importante..."
+                  placeholder="Mensaje"
                   disabled={isSubmitting}
                 />
                 {errors.message && (
